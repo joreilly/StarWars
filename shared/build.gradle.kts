@@ -15,6 +15,8 @@ kotlin {
             }
         }
     }
+    jvm()
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -44,6 +46,7 @@ kotlin {
         }
         val iosMain by getting
         val iosTest by getting
+        val jvmMain by getting
     }
 }
 
