@@ -12,13 +12,13 @@ class StarWarsRepositoryTest: BaseTest() {
     @Test
     fun testExample() = runTest {
         val repo = StarWarsRepository()
-        repo.fetchPeople().collect { people ->
+        repo.getPeople().collect { people ->
             people.forEach {
                 println(it.name)
             }
         }
 
-        repo.fetchFilms().collect { films ->
+        repo.getFilms().collect { films ->
             films.forEach {
                 println(it.title)
             }
