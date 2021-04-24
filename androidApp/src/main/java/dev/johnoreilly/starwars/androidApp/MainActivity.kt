@@ -10,19 +10,24 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Place
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
-import com.apollographql.apollo.api.ApolloExperimental
+import com.google.accompanist.insets.ProvideWindowInsets
+import com.google.accompanist.insets.navigationBarsPadding
+import com.google.accompanist.insets.statusBarsPadding
 import dev.johnoreilly.starwars.shared.StarWarsRepository
 import fragment.Film
 import fragment.Person
@@ -30,9 +35,12 @@ import fragment.Person
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setDecorFitsSystemWindows(window, false)
 
         setContent {
-            MainLayout()
+            ProvideWindowInsets {
+                MainLayout()
+            }
         }
     }
 }
@@ -62,7 +70,7 @@ fun MainLayout() {
     val filmList by repo.getFilms().collectAsState(emptyList())
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text("Star Wars") } ) },
+        topBar = { StarWarsTopAppBar("Star Wars") },
         bottomBar = { StarWarsBottomNavigation(navController) }
     ) {
 
@@ -78,9 +86,21 @@ fun MainLayout() {
 }
 
 @Composable
+private fun StarWarsTopAppBar(title: String) {
+    Surface(color = MaterialTheme.colors.primary) {
+        TopAppBar(
+            title = { Text(title) },
+            backgroundColor = Color.Transparent,
+            elevation = 0.dp,
+            modifier = Modifier.statusBarsPadding()
+        )
+    }
+}
+
+@Composable
 private fun StarWarsBottomNavigation(navController: NavHostController) {
 
-    BottomNavigation {
+    BottomNavigation(modifier = Modifier.navigationBarsPadding()) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.arguments?.getString(KEY_ROUTE)
 
@@ -113,7 +133,10 @@ fun PersonView(person: Person) {
     Row(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
         Column {
             Text(text = person.name ?: "", style = TextStyle(fontSize = 20.sp))
-            Text(text = person.homeworld?.name ?: "", style = TextStyle(color = Color.DarkGray, fontSize = 14.sp))
+            Text(
+                text = person.homeworld?.name ?: "",
+                style = TextStyle(color = Color.DarkGray, fontSize = 14.sp)
+            )
         }
     }
     Divider()
@@ -135,7 +158,10 @@ fun FilmView(film: Film) {
     Row(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
         Column {
             Text(text = film.title ?: "", style = TextStyle(fontSize = 20.sp))
-            Text(text = film.director ?: "", style = TextStyle(color = Color.DarkGray, fontSize = 14.sp))
+            Text(
+                text = film.director ?: "",
+                style = TextStyle(color = Color.DarkGray, fontSize = 14.sp)
+            )
         }
     }
     Divider()
