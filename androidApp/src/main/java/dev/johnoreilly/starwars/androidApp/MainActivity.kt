@@ -51,14 +51,14 @@ sealed class Screen(val title: String) {
 }
 
 data class BottomNavigationitem(
-    val route: String,
-    val icon: ImageVector,
-    val iconContentDescription: String
+        val route: String,
+        val icon: ImageVector,
+        val iconContentDescription: String
 )
 
 val bottomNavigationItems = listOf(
-    BottomNavigationitem(Screen.PersonList.title, Icons.Default.Person, Screen.PersonList.title),
-    BottomNavigationitem(Screen.FilmList.title, Icons.Filled.Place, Screen.FilmList.title)
+        BottomNavigationitem(Screen.PersonList.title, Icons.Default.Person, Screen.PersonList.title),
+        BottomNavigationitem(Screen.FilmList.title, Icons.Filled.Place, Screen.FilmList.title)
 )
 
 @Composable
@@ -70,8 +70,8 @@ fun MainLayout() {
     val filmList by repo.getFilms().collectAsState(emptyList())
 
     Scaffold(
-        topBar = { StarWarsTopAppBar("Star Wars") },
-        bottomBar = { StarWarsBottomNavigation(navController) }
+            topBar = { StarWarsTopAppBar("Star Wars") },
+            bottomBar = { StarWarsBottomNavigation(navController) }
     ) {
 
         NavHost(navController, startDestination = Screen.PersonList.title) {
@@ -89,10 +89,10 @@ fun MainLayout() {
 private fun StarWarsTopAppBar(title: String) {
     Surface(color = MaterialTheme.colors.primary) {
         TopAppBar(
-            title = { Text(title) },
-            backgroundColor = Color.Transparent,
-            elevation = 0.dp,
-            modifier = Modifier.statusBarsPadding()
+                title = { Text(title) },
+                backgroundColor = Color.Transparent,
+                elevation = 0.dp,
+                modifier = Modifier.statusBarsPadding()
         )
     }
 }
@@ -106,14 +106,14 @@ private fun StarWarsBottomNavigation(navController: NavHostController) {
 
         bottomNavigationItems.forEach { item ->
             BottomNavigationItem(
-                icon = { Icon(item.icon, contentDescription = item.iconContentDescription) },
-                selected = currentRoute == item.route,
-                onClick = {
-                    navController.navigate(item.route) {
-                        popUpTo = navController.graph.startDestination
-                        launchSingleTop = true
+                    icon = { Icon(item.icon, contentDescription = item.iconContentDescription) },
+                    selected = currentRoute == item.route,
+                    onClick = {
+                        navController.navigate(item.route) {
+                            popUpTo = navController.graph.startDestination
+                            launchSingleTop = true
+                        }
                     }
-                }
             )
         }
     }
@@ -134,8 +134,8 @@ fun PersonView(person: Person) {
         Column {
             Text(text = person.name ?: "", style = TextStyle(fontSize = 20.sp))
             Text(
-                text = person.homeworld?.name ?: "",
-                style = TextStyle(color = Color.DarkGray, fontSize = 14.sp)
+                    text = person.homeworld?.name ?: "",
+                    style = TextStyle(color = Color.DarkGray, fontSize = 14.sp)
             )
         }
     }
@@ -159,8 +159,8 @@ fun FilmView(film: Film) {
         Column {
             Text(text = film.title ?: "", style = TextStyle(fontSize = 20.sp))
             Text(
-                text = film.director ?: "",
-                style = TextStyle(color = Color.DarkGray, fontSize = 14.sp)
+                    text = film.director ?: "",
+                    style = TextStyle(color = Color.DarkGray, fontSize = 14.sp)
             )
         }
     }
