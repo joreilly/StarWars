@@ -42,7 +42,6 @@ sealed class Screen(val title: String) {
     object FilmList : Screen("Film List")
 }
 
-
 data class BottomNavigationitem(
     val route: String,
     val icon: ImageVector,
