@@ -1,3 +1,4 @@
+
 object Versions {
     const val kotlin = "1.4.32"
     const val kotlinxCoroutines = "1.4.3-native-mt"
@@ -30,7 +31,6 @@ object Compose {
     const val material = "androidx.compose.material:material:${Versions.compose}"
     const val runtimeLiveData = "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
     const val navigation = "androidx.navigation:navigation-compose:${Versions.nav_compose}"
-    const val accompanist = "com.google.accompanist:accompanist-coil:${Versions.accompanist}"
 }
 
 object Google {
