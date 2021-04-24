@@ -20,9 +20,13 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import com.apollographql.apollo.api.ApolloExperimental
+import com.google.accompanist.insets.ProvideWindowInsets
+import com.google.accompanist.insets.navigationBarsPadding
+import com.google.accompanist.insets.statusBarsPadding
 import dev.johnoreilly.starwars.shared.StarWarsRepository
 import fragment.Film
 import fragment.Person
@@ -30,9 +34,12 @@ import fragment.Person
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setDecorFitsSystemWindows(window, false)
 
         setContent {
-            MainLayout()
+            ProvideWindowInsets {
+                MainLayout()
+            }
         }
     }
 }
@@ -62,7 +69,7 @@ fun MainLayout() {
     val filmList by repo.getFilms().collectAsState(emptyList())
 
     Scaffold(
-        topBar = { TopAppBar(title = { Text("Star Wars") } ) },
+        topBar = { StarWarsTopAppBar("Star Wars") },
         bottomBar = { StarWarsBottomNavigation(navController) }
     ) {
 
@@ -78,9 +85,21 @@ fun MainLayout() {
 }
 
 @Composable
+private fun StarWarsTopAppBar(title: String) {
+    Surface(color = MaterialTheme.colors.primary) {
+        TopAppBar(
+            title = { Text(title) },
+            backgroundColor = Color.Transparent,
+            elevation = 0.dp,
+            modifier = Modifier.statusBarsPadding()
+        )
+    }
+}
+
+@Composable
 private fun StarWarsBottomNavigation(navController: NavHostController) {
 
-    BottomNavigation {
+    BottomNavigation(modifier = Modifier.navigationBarsPadding()) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.arguments?.getString(KEY_ROUTE)
 

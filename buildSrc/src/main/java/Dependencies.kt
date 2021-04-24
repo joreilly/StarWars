@@ -6,7 +6,7 @@ object Versions {
 
     const val compose = "1.0.0-beta05"
     const val nav_compose = "1.0.0-alpha10"
-    const val accompanist = "0.8.0"
+    const val accompanist = "0.8.1"
 
     const val junit = "4.13"
 }
@@ -31,8 +31,13 @@ object Compose {
     const val material = "androidx.compose.material:material:${Versions.compose}"
     const val runtimeLiveData = "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
     const val navigation = "androidx.navigation:navigation-compose:${Versions.nav_compose}"
-    const val accompanist= "com.google.accompanist:accompanist-coil:${Versions.accompanist}"
 }
 
+object Google {
+    object Accompanist {
+        const val coil = "com.google.accompanist:accompanist-coil:${Versions.accompanist}"
+        const val insets = "com.google.accompanist:accompanist-insets:${Versions.accompanist}"
+    }
+}
 
 
