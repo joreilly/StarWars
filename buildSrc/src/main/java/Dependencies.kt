@@ -29,7 +29,6 @@ object Compose {
     const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
     const val foundationLayout = "androidx.compose.foundation:foundation-layout:${Versions.compose}"
     const val material = "androidx.compose.material:material:${Versions.compose}"
-    const val runtimeLiveData = "androidx.compose.runtime:runtime-livedata:${Versions.compose}"
     const val navigation = "androidx.navigation:navigation-compose:${Versions.nav_compose}"
 }
 
