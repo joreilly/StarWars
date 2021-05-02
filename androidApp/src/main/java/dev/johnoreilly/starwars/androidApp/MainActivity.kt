@@ -10,26 +10,26 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Place
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
-import com.apollographql.apollo.api.ApolloExperimental
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.insets.statusBarsPadding
 import dev.johnoreilly.starwars.shared.StarWarsRepository
 import fragment.Film
 import fragment.Person
+import dev.johnoreilly.starwars.androidApp.theme.StarWarsTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +37,10 @@ class MainActivity : ComponentActivity() {
         setDecorFitsSystemWindows(window, false)
 
         setContent {
-            ProvideWindowInsets {
-                MainLayout()
+            StarWarsTheme {
+                ProvideWindowInsets {
+                    MainLayout()
+                }
             }
         }
     }
@@ -50,14 +52,14 @@ sealed class Screen(val title: String) {
 }
 
 data class BottomNavigationitem(
-    val route: String,
-    val icon: ImageVector,
-    val iconContentDescription: String
+        val route: String,
+        val icon: Int,
+        val iconContentDescription: String
 )
 
 val bottomNavigationItems = listOf(
-    BottomNavigationitem(Screen.PersonList.title, Icons.Default.Person, Screen.PersonList.title),
-    BottomNavigationitem(Screen.FilmList.title, Icons.Filled.Place, Screen.FilmList.title)
+    BottomNavigationitem(Screen.PersonList.title, R.drawable.ic_face, Screen.PersonList.title),
+    BottomNavigationitem(Screen.FilmList.title, R.drawable.ic_movie, Screen.FilmList.title)
 )
 
 @Composable
@@ -84,6 +86,8 @@ fun MainLayout() {
     }
 }
 
+
+
 @Composable
 private fun StarWarsTopAppBar(title: String) {
     Surface(color = MaterialTheme.colors.primary) {
@@ -103,9 +107,9 @@ private fun StarWarsBottomNavigation(navController: NavHostController) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.arguments?.getString(KEY_ROUTE)
 
-        bottomNavigationItems.forEach { item ->
+         bottomNavigationItems.forEach { item ->
             BottomNavigationItem(
-                icon = { Icon(item.icon, contentDescription = item.iconContentDescription) },
+                icon = { Icon(painterResource(item.icon), contentDescription = item.iconContentDescription) },
                 selected = currentRoute == item.route,
                 onClick = {
                     navController.navigate(item.route) {
