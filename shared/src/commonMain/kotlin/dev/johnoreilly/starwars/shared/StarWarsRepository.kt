@@ -7,13 +7,14 @@ import com.apollographql.apollo.api.ApolloExperimental
 import com.apollographql.apollo.network.http.ApolloHttpNetworkTransport
 import fragment.Film
 import fragment.Person
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
-@ApolloExperimental
+@OptIn(ApolloExperimental::class,ExperimentalCoroutinesApi::class)
 class StarWarsRepository {
     private val scope = MainScope()
 
