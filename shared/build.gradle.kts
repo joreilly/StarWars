@@ -64,13 +64,17 @@ android {
     }
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompileCommon> {
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
-        freeCompilerArgs = listOf(
-            "-Xopt-in=kotlin.RequiresOptIn",
-            "-Xuse-experimental=com.apollographql.apollo.api.ApolloExperimental",
-            "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi"
-        )
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+kotlin.sourceSets.all {
+    languageSettings.apply {
+        useExperimentalAnnotation("kotlin.RequiresOptIn")
+        useExperimentalAnnotation("kotlinx.coroutines.ExperimentalCoroutinesApi")
+        useExperimentalAnnotation("com.apollographql.apollo.api.ApolloExperimental")
     }
 }
 
