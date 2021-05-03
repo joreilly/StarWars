@@ -27,9 +27,9 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.insets.statusBarsPadding
 import dev.johnoreilly.starwars.shared.StarWarsRepository
-import fragment.Film
 import fragment.Person
 import dev.johnoreilly.starwars.androidApp.theme.StarWarsTheme
+import dev.johnoreilly.starwars.shared.model.Film
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -160,11 +160,8 @@ fun FilmList(filmList: List<Film>) {
 fun FilmView(film: Film) {
     Row(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
         Column {
-            Text(text = film.title ?: "", style = MaterialTheme.typography.h6)
-            Text(
-                text = film.director ?: "",
-                style = MaterialTheme.typography.caption.copy(color = Color.DarkGray)
-            )
+            Text(film.title, style = MaterialTheme.typography.h6)
+            Text(film.director, style = MaterialTheme.typography.caption.copy(color = Color.DarkGray))
         }
     }
     Divider()

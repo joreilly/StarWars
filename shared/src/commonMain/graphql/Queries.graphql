@@ -19,12 +19,12 @@ fragment Person on Person {
 query GetAllFilms {
   allFilms {
     films {
-      ...Film
+      ...FilmFragment
     }
   }
 }
 
-fragment Film on Film {
+fragment FilmFragment on Film {
   id
   title
   director
