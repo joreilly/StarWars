@@ -1,12 +1,12 @@
 query GetAllPeople {
   allPeople {
     people {
-      ...Person
+      ...PersonFragment
     }
   }
 }
 
-fragment Person on Person {
+fragment PersonFragment on Person {
   id
   name
   homeworld {

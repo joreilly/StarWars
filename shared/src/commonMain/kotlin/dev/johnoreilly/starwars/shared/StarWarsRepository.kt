@@ -5,8 +5,7 @@ import GetAllPeopleQuery
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.network.http.ApolloHttpNetworkTransport
 import dev.johnoreilly.starwars.shared.model.Film
-import fragment.FilmFragment
-import fragment.Person
+import dev.johnoreilly.starwars.shared.model.Person
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
@@ -27,9 +26,12 @@ class StarWarsRepository {
     )
 
     fun getPeople(): Flow<List<Person>> {
-        return apolloClient.query(GetAllPeopleQuery())
-            .execute()
-            .map { it.data?.allPeople?.peopleFilterNotNull()?.map { it.fragments.person } ?: emptyList() }
+        return apolloClient.query(GetAllPeopleQuery()).execute()
+            .map {
+                it.data?.allPeople?.peopleFilterNotNull()?.map { it.fragments.personFragment }
+                    ?.map { Person(it.id, it.name ?: "", it.homeworld?.name ?: "") }
+                    ?: emptyList()
+            }
     }
 
     fun getFilms(): Flow<List<Film>> {

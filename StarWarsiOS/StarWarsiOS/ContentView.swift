@@ -42,8 +42,8 @@ struct PersonView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(person.name ?? "").font(.headline)
-            Text(person.homeworld?.name ?? "").font(.subheadline)
+            Text(person.name).font(.headline)
+            Text(person.homeWorld).font(.subheadline)
         }
     }
 }
@@ -71,8 +71,8 @@ struct FilmView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(film.title ?? "").font(.headline)
-                Text(film.director ?? "").font(.subheadline)
+                Text(film.title).font(.headline)
+                Text(film.director).font(.subheadline)
             }
         }
     }

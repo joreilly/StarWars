@@ -27,9 +27,9 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.insets.statusBarsPadding
 import dev.johnoreilly.starwars.shared.StarWarsRepository
-import fragment.Person
 import dev.johnoreilly.starwars.androidApp.theme.StarWarsTheme
 import dev.johnoreilly.starwars.shared.model.Film
+import dev.johnoreilly.starwars.shared.model.Person
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -135,11 +135,8 @@ fun PeopleList(people: List<Person>) {
 fun PersonView(person: Person) {
     Row(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
         Column {
-            Text(text = person.name ?: "", style = MaterialTheme.typography.h6)
-            Text(
-                text =person.homeworld?.name ?: "",
-                style = MaterialTheme.typography.caption.copy(color = Color.DarkGray)
-            )
+            Text(text = person.name, style = MaterialTheme.typography.h6)
+            Text(text = person.homeWorld, style = MaterialTheme.typography.caption.copy(color = Color.DarkGray))
         }
     }
     Divider()
