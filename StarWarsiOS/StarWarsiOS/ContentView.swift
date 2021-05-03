@@ -29,7 +29,7 @@ struct PeopleView: View {
             List(viewModel.peopleList, id: \.id) { person in
                 PersonView(person: person)
             }
-            .navigationTitle("People")
+            .navigationTitle("Star Wars")
             .onAppear {
                 viewModel.fetchPeople()
             }
@@ -69,9 +69,11 @@ struct FilmView: View {
     var film: Film
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(film.title ?? "").font(.headline)
-            Text(film.director ?? "").font(.subheadline)
+        HStack {
+            VStack(alignment: .leading) {
+                Text(film.title ?? "").font(.headline)
+                Text(film.director ?? "").font(.subheadline)
+            }
         }
     }
 }

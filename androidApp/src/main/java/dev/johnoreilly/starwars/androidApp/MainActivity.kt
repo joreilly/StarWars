@@ -135,8 +135,11 @@ fun PeopleList(people: List<Person>) {
 fun PersonView(person: Person) {
     Row(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
         Column {
-            Text(text = person.name ?: "", style = TextStyle(fontSize = 20.sp))
-            Text(text = person.homeworld?.name ?: "", style = TextStyle(color = Color.DarkGray, fontSize = 14.sp))
+            Text(text = person.name ?: "", style = MaterialTheme.typography.h6)
+            Text(
+                text =person.homeworld?.name ?: "",
+                style = MaterialTheme.typography.caption.copy(color = Color.DarkGray)
+            )
         }
     }
     Divider()
@@ -157,8 +160,11 @@ fun FilmList(filmList: List<Film>) {
 fun FilmView(film: Film) {
     Row(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
         Column {
-            Text(text = film.title ?: "", style = TextStyle(fontSize = 20.sp))
-            Text(text = film.director ?: "", style = TextStyle(color = Color.DarkGray, fontSize = 14.sp))
+            Text(text = film.title ?: "", style = MaterialTheme.typography.h6)
+            Text(
+                text = film.director ?: "",
+                style = MaterialTheme.typography.caption.copy(color = Color.DarkGray)
+            )
         }
     }
     Divider()
