@@ -131,35 +131,33 @@ fun PeopleList(people: List<Person>) {
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PersonView(person: Person) {
-    Row(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
-        Column {
-            Text(text = person.name, style = MaterialTheme.typography.h6)
-            Text(text = person.homeWorld, style = MaterialTheme.typography.caption.copy(color = Color.DarkGray))
-        }
-    }
+    ListItem(
+        text = { Text(person.name) },
+        secondaryText = { Text(person.homeWorld) }
+    )
     Divider()
 }
 
 
 @Composable
 fun FilmList(filmList: List<Film>) {
-    LazyColumn {
-        items(filmList) { film ->
+    Column {
+        filmList.forEach { film ->
             FilmView(film)
         }
     }
 }
 
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun FilmView(film: Film) {
-    Row(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
-        Column {
-            Text(film.title, style = MaterialTheme.typography.h6)
-            Text(film.director, style = MaterialTheme.typography.caption.copy(color = Color.DarkGray))
-        }
-    }
+    ListItem(
+        text = { Text(film.title) },
+        secondaryText = { Text(film.director) }
+    )
     Divider()
 }
