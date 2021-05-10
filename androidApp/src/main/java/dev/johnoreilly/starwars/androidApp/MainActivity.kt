@@ -30,6 +30,7 @@ import dev.johnoreilly.starwars.shared.StarWarsRepository
 import dev.johnoreilly.starwars.androidApp.theme.StarWarsTheme
 import dev.johnoreilly.starwars.shared.model.Film
 import dev.johnoreilly.starwars.shared.model.Person
+import kotlinx.coroutines.flow.collect
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,11 +52,7 @@ sealed class Screen(val title: String) {
     object FilmList : Screen("Film List")
 }
 
-data class BottomNavigationitem(
-        val route: String,
-        val icon: Int,
-        val iconContentDescription: String
-)
+data class BottomNavigationitem(val route: String, val icon: Int, val iconContentDescription: String)
 
 val bottomNavigationItems = listOf(
     BottomNavigationitem(Screen.PersonList.title, R.drawable.ic_face, Screen.PersonList.title),
@@ -65,11 +62,16 @@ val bottomNavigationItems = listOf(
 @Composable
 fun MainLayout() {
     val navController = rememberNavController()
-
     val repo = remember { StarWarsRepository() }
-    val people by repo.getPeople().collectAsState(emptyList())
-    val filmList by repo.getFilms().collectAsState(emptyList())
 
+    val people by produceState(initialValue = emptyList<Person>(), repo) {
+        repo.getPeople().collect { value = it }
+    }
+
+    val filmList by produceState(initialValue = emptyList<Film>(), repo) {
+        repo.getFilms().collect { value = it }
+    }
+    
     Scaffold(
         topBar = { StarWarsTopAppBar("Star Wars") },
         bottomBar = { StarWarsBottomNavigation(navController) }
