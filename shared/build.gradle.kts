@@ -6,6 +6,19 @@ plugins {
     id("com.apollographql.apollo")
 }
 
+// workaround for https://youtrack.jetbrains.com/issue/KT-43944
+android {
+    configurations {
+        create("androidTestApi")
+        create("androidTestDebugApi")
+        create("androidTestReleaseApi")
+        create("testApi")
+        create("testDebugApi")
+        create("testReleaseApi")
+    }
+}
+
+
 kotlin {
     android()
     ios {
@@ -51,11 +64,11 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(29)
+    compileSdk = AndroidSdk.compile
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdkVersion(24)
-        targetSdkVersion(29)
+        minSdk = AndroidSdk.min
+        targetSdk = AndroidSdk.target
     }
 
     compileOptions {

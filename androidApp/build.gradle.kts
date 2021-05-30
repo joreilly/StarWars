@@ -1,19 +1,28 @@
-import org.jetbrains.kotlin.gradle.plugin.PLUGIN_CLASSPATH_CONFIGURATION_NAME
-
 plugins {
     id("com.android.application")
     kotlin("android")
 }
 
 android {
-    compileSdkVersion(29)
+    compileSdk = AndroidSdk.compile
     defaultConfig {
         applicationId = "dev.johnoreilly.starwars.androidApp"
-        minSdkVersion(24)
-        targetSdkVersion(29)
+        minSdk = AndroidSdk.min
+        targetSdk = AndroidSdk.target
+
         versionCode = 1
         versionName = "1.0"
     }
+
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.compose
+    }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -42,9 +51,6 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 
 
 dependencies {
-    add(PLUGIN_CLASSPATH_CONFIGURATION_NAME, "androidx.compose.compiler:compiler:${Versions.compose}")
-    implementation("androidx.compose.runtime:runtime:${Versions.compose}")
-
     implementation(project(":shared"))
 
     implementation(Compose.ui)
