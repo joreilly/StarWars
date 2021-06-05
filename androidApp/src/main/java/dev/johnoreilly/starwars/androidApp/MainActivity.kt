@@ -99,7 +99,7 @@ private fun StarWarsBottomNavigation(navController: NavHostController) {
 
     BottomNavigation(modifier = Modifier.navigationBarsPadding()) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.arguments?.getString(KEY_ROUTE)
+        val currentRoute = navBackStackEntry?.destination?.route
 
          bottomNavigationItems.forEach { item ->
             BottomNavigationItem(
@@ -107,7 +107,7 @@ private fun StarWarsBottomNavigation(navController: NavHostController) {
                 selected = currentRoute == item.route,
                 onClick = {
                     navController.navigate(item.route) {
-                        popUpTo = navController.graph.startDestination
+                        popUpTo(navController.graph.id)
                         launchSingleTop = true
                     }
                 }
