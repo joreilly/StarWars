@@ -4,6 +4,11 @@ object Versions {
     const val kotlinxCoroutines = "1.5.0-native-mt"
     const val apollo = "2.5.8"
 
+    const val kotlinCoroutines = "1.5.0-native-mt"
+    const val ktor = "1.6.0"
+    const val kotlinxSerialization = "1.2.1"
+    const val slf4j = "1.7.30"
+
     const val compose = "1.0.0-beta09"
     const val nav_compose = "2.4.0-alpha03"
     const val accompanist = "0.12.0"
@@ -38,5 +43,21 @@ object Google {
         const val insets = "com.google.accompanist:accompanist-insets:${Versions.accompanist}"
     }
 }
+
+object Ktor {
+    const val serverCore = "io.ktor:ktor-server-core:${Versions.ktor}"
+    const val serverNetty = "io.ktor:ktor-server-netty:${Versions.ktor}"
+    const val serialization = "io.ktor:ktor-serialization:${Versions.ktor}"
+    const val clientJson = "io.ktor:ktor-client-json:${Versions.ktor}"
+    const val slf4j = "org.slf4j:slf4j-simple:${Versions.slf4j}"
+    const val ktorGraphql = "com.apurebase:kgraphql-ktor:0.17.9"
+}
+
+object Kotlinx {
+    const val serializationCore = "org.jetbrains.kotlinx:kotlinx-serialization-core:${Versions.kotlinxSerialization}"
+    const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}"
+}
+
+
 
 
