@@ -18,6 +18,7 @@ class StarWarsRepository {
     private val apolloClient = ApolloClient(
         networkTransport = ApolloHttpNetworkTransport(
             serverUrl = "https://swapi-graphql.netlify.app/.netlify/functions/index",
+            //serverUrl = "http://10.0.2.2:8080/graphql",
             headers = mapOf(
                 "Accept" to "application/json",
                 "Content-Type" to "application/json",

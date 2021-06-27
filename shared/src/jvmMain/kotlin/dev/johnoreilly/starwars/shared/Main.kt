@@ -16,7 +16,7 @@ fun main() = runBlocking {
 
     repo.getFilms().collect { films ->
         films.forEach {
-            println(it.title)
+            println(it)
         }
     }
 }

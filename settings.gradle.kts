@@ -9,6 +9,6 @@ pluginManagement {
 rootProject.name = "StarWarsKMM"
 
 
-include(":androidApp")
-include(":shared")
+include(":androidApp", ":shared")
+include(":backend")
 
