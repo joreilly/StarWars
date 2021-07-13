@@ -57,11 +57,11 @@ fun MainLayout() {
     val repo = remember { StarWarsRepository() }
 
     val people by produceState(initialValue = emptyList<Person>(), repo) {
-        repo.getPeople().collect { value = it }
+        value = repo.getPeople()
     }
 
     val filmList by produceState(initialValue = emptyList<Film>(), repo) {
-        repo.getFilms().collect { value = it }
+        value = repo.getFilms()
     }
 
     Scaffold(

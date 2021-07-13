@@ -1,6 +1,6 @@
 query GetAllPeople {
   allPeople {
-    people {
+    people  {
       ...PersonFragment
     }
   }

@@ -1,0 +1,28 @@
+extend type Root @nonnull(fields: """
+allPeople
+allFilms
+""")
+
+extend type PeopleConnection @nonnull(fields: """
+people
+""")
+
+extend type Person @nonnull(fields: """
+name
+homeworld
+""")
+
+
+extend type Planet @nonnull(fields: """
+name
+""")
+
+
+extend type FilmsConnection @nonnull(fields: """
+films
+""")
+
+extend type Film @nonnull(fields: """
+title
+director
+""")

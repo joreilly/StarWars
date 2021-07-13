@@ -16,6 +16,6 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew assembleDebug
     - name: Build iOS shared code
-      run: ./gradlew :shared:compileKotlinIosArm64
+      run: ./gradlew -P"kotlinVersion"="1.5.20" :shared:compileKotlinIosArm64
     - name: Build backend
       run: ./gradlew :backend:assemble
