@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("com.apollographql.apollo")
+    id("com.apollographql.apollo3")
 }
 
 // workaround for https://youtrack.jetbrains.com/issue/KT-43944
@@ -87,7 +87,7 @@ kotlin.sourceSets.all {
     languageSettings.apply {
         useExperimentalAnnotation("kotlin.RequiresOptIn")
         useExperimentalAnnotation("kotlinx.coroutines.ExperimentalCoroutinesApi")
-        useExperimentalAnnotation("com.apollographql.apollo.api.ApolloExperimental")
+        useExperimentalAnnotation("com.apollographql.apollo3.api.ApolloExperimental")
     }
 }
 
@@ -109,3 +109,6 @@ val packForXcode by tasks.creating(Sync::class) {
 
 tasks.getByName("build").dependsOn(packForXcode)
 
+apollo {
+    codegenModels.set("operationBased")
+}

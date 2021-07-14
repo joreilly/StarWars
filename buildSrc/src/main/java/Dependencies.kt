@@ -2,7 +2,7 @@
 object Versions {
     const val kotlin = "1.5.10"
     const val kotlinxCoroutines = "1.5.0-native-mt"
-    const val apollo = "2.5.8"
+    const val apollo = "3.0.0-alpha01"
 
     const val kotlinCoroutines = "1.5.0-native-mt"
     const val ktor = "1.6.0"
@@ -24,7 +24,7 @@ object AndroidSdk {
 }
 
 object Deps {
-    const val apolloRuntime = "com.apollographql.apollo:apollo-runtime-kotlin:${Versions.apollo}"
+    const val apolloRuntime = "com.apollographql.apollo3:apollo-runtime:${Versions.apollo}"
 }
 
 object Compose {

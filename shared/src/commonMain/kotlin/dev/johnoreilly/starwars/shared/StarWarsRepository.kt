@@ -2,64 +2,41 @@ package dev.johnoreilly.starwars.shared
 
 import GetAllFilmsQuery
 import GetAllPeopleQuery
-import com.apollographql.apollo.ApolloClient
-import com.apollographql.apollo.network.http.ApolloHttpNetworkTransport
+import com.apollographql.apollo3.ApolloClient
 import dev.johnoreilly.starwars.shared.model.Film
 import dev.johnoreilly.starwars.shared.model.Person
+import dev.johnoreilly.starwars.shared.model.mapToModel
 import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class StarWarsRepository {
-    private val scope = MainScope()
+    private val serverUrl = "https://swapi-graphql.netlify.app/.netlify/functions/index"
+    //private val serverUrl = "http://10.0.2.2:8080/graphql"
+    private val apolloClient = ApolloClient(serverUrl)
 
-    private val apolloClient = ApolloClient(
-        networkTransport = ApolloHttpNetworkTransport(
-            serverUrl = "https://swapi-graphql.netlify.app/.netlify/functions/index",
-            //serverUrl = "http://10.0.2.2:8080/graphql",
-            headers = mapOf(
-                "Accept" to "application/json",
-                "Content-Type" to "application/json",
-            )
-        )
-    )
-
-    fun getPeople(): Flow<List<Person>> {
-        return apolloClient.query(GetAllPeopleQuery()).execute()
-            .map {
-                it.data?.allPeople?.peopleFilterNotNull()?.map { it.fragments.personFragment }
-                    ?.map { Person(it.id, it.name ?: "", it.homeworld?.name ?: "") }
-                    ?: emptyList()
-            }
+    suspend fun getPeople(): List<Person> {
+        val response = apolloClient.query(GetAllPeopleQuery())
+        return response.dataOrThrow.allPeople.people.mapNotNull { it?.personFragment?.mapToModel() }
     }
 
-    fun getFilms(): Flow<List<Film>> {
-        return apolloClient.query(GetAllFilmsQuery()).execute()
-            .map {
-                it.data?.allFilms?.filmsFilterNotNull()?.map { it.fragments.filmFragment }
-                    ?.map { Film(it.id, it.title ?: "", it.director ?: "") }
-                    ?: emptyList()
-            }
+    suspend fun getFilms(): List<Film> {
+        val response = apolloClient.query(GetAllFilmsQuery())
+        return response.dataOrThrow.allFilms.films.mapNotNull { it?.filmFragment?.mapToModel() }
     }
 
 
     // called from iOS
+    private val scope = MainScope()
 
     fun getPeople(success: (List<Person>) -> Unit)  {
         scope.launch {
-            getPeople().collect {
-                success(it)
-            }
+            success(getPeople())
         }
     }
 
     fun getFilms(success: (List<Film>) -> Unit)  {
         scope.launch {
-            getFilms().collect {
-                success(it)
-            }
+            success(getFilms())
         }
     }
 }
