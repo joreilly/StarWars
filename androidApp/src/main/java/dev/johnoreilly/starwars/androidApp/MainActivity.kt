@@ -129,8 +129,8 @@ fun PeopleList(people: List<Person>) {
 @Composable
 fun PersonView(person: Person) {
     ListItem(
-        text = { Text(person.name) },
-        secondaryText = { Text(person.homeWorld) }
+        text = { Text(person.name, style = MaterialTheme.typography.h6) },
+        secondaryText = { Text(person.homeWorld, style = MaterialTheme.typography.subtitle1, color = Color.DarkGray) }
     )
     Divider()
 }
@@ -138,10 +138,10 @@ fun PersonView(person: Person) {
 
 @Composable
 fun FilmList(filmList: List<Film>) {
-    Column {
-        filmList.forEach { film ->
+    LazyColumn {
+        items(items = filmList, itemContent = { film ->
             FilmView(film)
-        }
+        })
     }
 }
 
@@ -150,8 +150,8 @@ fun FilmList(filmList: List<Film>) {
 @Composable
 fun FilmView(film: Film) {
     ListItem(
-        text = { Text(film.title) },
-        secondaryText = { Text(film.director) }
+        text = { Text(film.title, style = MaterialTheme.typography.h6) },
+        secondaryText = { Text(film.director, style = MaterialTheme.typography.subtitle1, color = Color.DarkGray) }
     )
     Divider()
 }
