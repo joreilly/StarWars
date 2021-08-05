@@ -61,5 +61,4 @@ dependencies {
     implementation(Compose.navigation)
 
     implementation(Google.Accompanist.insets)
-    implementation(Google.Accompanist.coil)
 }
