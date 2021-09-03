@@ -8,9 +8,9 @@ object Versions {
     const val kotlinxSerialization = "1.2.2"
     const val slf4j = "1.7.30"
 
-    const val compose = "1.0.1"
-    const val nav_compose = "2.4.0-alpha06"
-    const val accompanist = "0.16.0"
+    const val compose = "1.0.2"
+    const val nav_compose = "2.4.0-alpha08"
+    const val accompanist = "0.17.0"
 
     const val junit = "4.13"
 }
@@ -18,7 +18,7 @@ object Versions {
 
 object AndroidSdk {
     const val min = 24
-    const val compile = 30
+    const val compile = 31
     const val target = compile
 }
 
