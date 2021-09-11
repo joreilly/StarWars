@@ -25,4 +25,5 @@ films
 extend type Film @nonnull(fields: """
 title
 director
+releaseDate
 """)

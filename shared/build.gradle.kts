@@ -6,19 +6,6 @@ plugins {
     id("com.apollographql.apollo3")
 }
 
-// workaround for https://youtrack.jetbrains.com/issue/KT-43944
-android {
-    configurations {
-        create("androidTestApi")
-        create("androidTestDebugApi")
-        create("androidTestReleaseApi")
-        create("testApi")
-        create("testDebugApi")
-        create("testReleaseApi")
-    }
-}
-
-
 kotlin {
     android()
     ios {
@@ -33,7 +20,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinxCoroutines}") {
+                api("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}") {
                     isForce = true
                 }
 
@@ -54,7 +41,7 @@ kotlin {
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
-                implementation("junit:junit:4.13")
+                implementation("junit:junit:4.13.2")
             }
         }
         val iosMain by getting
@@ -111,4 +98,5 @@ tasks.getByName("build").dependsOn(packForXcode)
 
 apollo {
     codegenModels.set("operationBased")
+    packageName.set("dev.johnoreilly.starwars.shared")
 }

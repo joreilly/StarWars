@@ -36,22 +36,18 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
-        useIR = true
     }
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-        freeCompilerArgs = listOf("-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check",
-            "-Xuse-experimental=com.apollographql.apollo.api.ApolloExperimental"
-        )
-    }
-}
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions.freeCompilerArgs += "-Xopt-in=androidx.compose.material.ExperimentalMaterialApi"
+}
 
 dependencies {
     implementation(project(":shared"))
+
+    implementation("com.google.android.material:material:1.4.0")
 
     implementation(Compose.ui)
     implementation(Compose.uiGraphics)
@@ -61,5 +57,4 @@ dependencies {
     implementation(Compose.navigation)
 
     implementation(Google.Accompanist.insets)
-    implementation(Google.Accompanist.coil)
 }

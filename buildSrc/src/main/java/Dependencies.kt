@@ -1,17 +1,16 @@
 
 object Versions {
-    const val kotlin = "1.5.10"
-    const val kotlinxCoroutines = "1.5.0-native-mt"
-    const val apollo = "3.0.0-alpha01"
+    const val kotlin = "1.5.21"
+    const val apollo = "3.0.0-alpha03"
 
-    const val kotlinCoroutines = "1.5.0-native-mt"
-    const val ktor = "1.6.0"
-    const val kotlinxSerialization = "1.2.1"
+    const val kotlinCoroutines = "1.5.1-native-mt"
+    const val ktor = "1.6.2"
+    const val kotlinxSerialization = "1.2.2"
     const val slf4j = "1.7.30"
 
-    const val compose = "1.0.0-rc02"
-    const val nav_compose = "2.4.0-alpha04"
-    const val accompanist = "0.14.0"
+    const val compose = "1.0.2"
+    const val nav_compose = "2.4.0-alpha08"
+    const val accompanist = "0.17.0"
 
     const val junit = "4.13"
 }
@@ -19,7 +18,7 @@ object Versions {
 
 object AndroidSdk {
     const val min = 24
-    const val compile = 30
+    const val compile = 31
     const val target = compile
 }
 
@@ -39,7 +38,6 @@ object Compose {
 
 object Google {
     object Accompanist {
-        const val coil = "com.google.accompanist:accompanist-coil:${Versions.accompanist}"
         const val insets = "com.google.accompanist:accompanist-insets:${Versions.accompanist}"
     }
 }
