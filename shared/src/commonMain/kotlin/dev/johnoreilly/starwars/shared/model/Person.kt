@@ -1,6 +1,6 @@
 package dev.johnoreilly.starwars.shared.model
 
-import fragment.PersonFragment
+import dev.johnoreilly.starwars.fragment.PersonFragment
 
 data class Person(val id: String, val name: String, val homeWorld: String)
 

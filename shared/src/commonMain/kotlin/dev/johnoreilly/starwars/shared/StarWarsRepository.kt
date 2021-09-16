@@ -1,8 +1,8 @@
 package dev.johnoreilly.starwars.shared
 
-import GetAllFilmsQuery
-import GetAllPeopleQuery
 import com.apollographql.apollo3.ApolloClient
+import dev.johnoreilly.starwars.GetAllFilmsQuery
+import dev.johnoreilly.starwars.GetAllPeopleQuery
 import dev.johnoreilly.starwars.shared.model.Film
 import dev.johnoreilly.starwars.shared.model.Person
 import dev.johnoreilly.starwars.shared.model.mapToModel

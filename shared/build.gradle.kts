@@ -93,5 +93,7 @@ kotlin.sourceSets.all {
 
 
 apollo {
+    packageName.set("dev.johnoreilly.starwars")
     codegenModels.set("operationBased")
+    generateSchema.set(true)
 }
