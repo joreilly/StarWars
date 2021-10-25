@@ -1,7 +1,7 @@
 
 object Versions {
     const val kotlin = "1.5.31"
-    const val apollo = "3.0.0-alpha07"
+    const val apollo = "3.0.0-beta01"
 
     const val kotlinCoroutines = "1.5.2-native-mt"
     const val ktor = "1.6.2"
