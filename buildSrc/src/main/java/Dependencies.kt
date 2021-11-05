@@ -1,16 +1,16 @@
 
 object Versions {
     const val kotlin = "1.5.31"
-    const val apollo = "3.0.0-beta01"
+    const val apollo = "3.0.0-beta03"
 
     const val kotlinCoroutines = "1.5.2-native-mt"
     const val ktor = "1.6.2"
     const val kotlinxSerialization = "1.2.2"
     const val slf4j = "1.7.30"
 
-    const val compose = "1.0.4"
-    const val nav_compose = "2.4.0-alpha10"
-    const val accompanist = "0.20.0"
+    const val compose = "1.0.5"
+    const val nav_compose = "2.4.0-beta02"
+    const val accompanist = "0.20.2"
 
     const val junit = "4.13"
 }

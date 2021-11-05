@@ -12,15 +12,17 @@ import kotlinx.coroutines.launch
 class StarWarsRepository {
     private val serverUrl = "https://swapi-graphql.netlify.app/.netlify/functions/index"
     //private val serverUrl = "http://10.0.2.2:8080/graphql"
-    private val apolloClient = ApolloClient(serverUrl)
+    private val apolloClient = ApolloClient.Builder()
+        .serverUrl(serverUrl)
+        .build()
 
     suspend fun getPeople(): List<Person> {
-        val response = apolloClient.query(GetAllPeopleQuery())
+        val response = apolloClient.query(GetAllPeopleQuery()).execute()
         return response.dataOrThrow.allPeople.people.mapNotNull { it?.personFragment?.mapToModel() }
     }
 
     suspend fun getFilms(): List<Film> {
-        val response = apolloClient.query(GetAllFilmsQuery())
+        val response = apolloClient.query(GetAllFilmsQuery()).execute()
         return response.dataOrThrow.allFilms.films.mapNotNull { it?.filmFragment?.mapToModel() }
     }
 
