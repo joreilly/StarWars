@@ -18,12 +18,12 @@ class StarWarsRepository {
 
     suspend fun getPeople(): List<Person> {
         val response = apolloClient.query(GetAllPeopleQuery()).execute()
-        return response.dataOrThrow.allPeople.people.mapNotNull { it?.personFragment?.mapToModel() }
+        return response.dataAssertNoErrors.allPeople.people.mapNotNull { it?.personFragment?.mapToModel() }
     }
 
     suspend fun getFilms(): List<Film> {
         val response = apolloClient.query(GetAllFilmsQuery()).execute()
-        return response.dataOrThrow.allFilms.films.mapNotNull { it?.filmFragment?.mapToModel() }
+        return response.dataAssertNoErrors.allFilms.films.mapNotNull { it?.filmFragment?.mapToModel() }
     }
 
 
