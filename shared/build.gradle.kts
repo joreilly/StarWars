@@ -21,14 +21,11 @@ android {
 
 kotlin {
     android()
-    ios {
-        binaries {
-            framework {
-                baseName = "shared"
-            }
-        }
-    }
     jvm()
+
+    val iosArm64 = iosArm64()
+    val iosX64 = iosX64()
+    val iosSimulatorArm64 = iosSimulatorArm64()
 
     sourceSets {
         val commonMain by getting {
@@ -57,9 +54,30 @@ kotlin {
                 implementation("junit:junit:4.13")
             }
         }
-        val iosMain by getting
-        val iosTest by getting
+
+        val appleMain by creating {
+            dependsOn(commonMain)
+        }
+        val appleTest by creating {
+            dependsOn(commonTest)
+        }
+
         val jvmMain by getting
+
+        listOf(
+            iosArm64, iosX64, iosSimulatorArm64
+        ).forEach {
+            it.binaries.framework {
+                baseName = "shared"
+            }
+            getByName("${it.targetName}Main") {
+                dependsOn(appleMain)
+            }
+            getByName("${it.targetName}Test") {
+                dependsOn(appleTest)
+            }
+        }
+
     }
 }
 
