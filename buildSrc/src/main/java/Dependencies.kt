@@ -2,9 +2,9 @@
 object Versions {
     const val apollo = "3.0.0-rc01"
 
-    const val kotlinCoroutines = "1.5.1-new-mm-dev2"
-    const val ktor = "1.6.2"
-    const val kotlinxSerialization = "1.2.2"
+    const val kotlinCoroutines = "1.5.2-native-mt"
+    const val ktor = "1.6.5"
+    const val kotlinxSerialization = "1.3.1"
     const val slf4j = "1.7.30"
 
     const val compose = "1.0.5"
