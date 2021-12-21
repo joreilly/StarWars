@@ -1,23 +1,37 @@
 import Foundation
 import SwiftUI
 import shared
+import KMPNativeCoroutinesAsync
 
+
+@MainActor
 class StarWarsViewModel: ObservableObject {
     let repository = StarWarsRepository()
     @Published public var peopleList: [Person] = []
     @Published public var filmList: [Film] = []
     
-    func fetchPeople() {
-        repository.getPeople { peopleList in
-            self.peopleList = peopleList
+    
+    func startObservingPeople() async {
+        do {
+            let stream = asyncStream(for: repository.peopleNative)
+            for try await data in stream {
+                self.peopleList = data
+            }
+        } catch {
+            print("Failed with error: \(error)")
         }
     }
     
-    func fetchFilms() {
-        repository.getFilms { filmList in
-            self.filmList = filmList
+    func startObservingFilms() async {
+        do {
+            let stream = asyncStream(for: repository.filmsNative)
+            for try await data in stream {
+                self.filmList = data
+            }
+        } catch {
+            print("Failed with error: \(error)")
         }
     }
-
+    
 }
 

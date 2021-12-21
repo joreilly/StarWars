@@ -1,15 +1,19 @@
 
 object Versions {
+    const val kotlinVersion = "1.6.10"
     const val apollo = "3.0.0"
 
-    const val kotlinCoroutines = "1.5.2-native-mt"
-    const val ktor = "1.6.5"
+    const val kotlinCoroutines = "1.6.0-RC"
+    const val ktor = "2.0.0-eap-278"
     const val kotlinxSerialization = "1.3.1"
     const val slf4j = "1.7.30"
 
-    const val compose = "1.0.5"
-    const val nav_compose = "2.4.0-beta02"
-    const val accompanist = "0.20.2"
+    const val compose = "1.1.0-rc01"
+    const val composeCompiler = "1.1.0-rc02"
+    const val navCompose = "2.4.0-rc01"
+    const val accompanist = "0.21.0-beta"
+
+    const val kmpNativeCoroutines = "0.10.0-new-mm"
 
     const val junit = "4.13"
 }
@@ -21,18 +25,20 @@ object AndroidSdk {
     const val target = compile
 }
 
-object Deps {
+object Apollo {
     const val apolloRuntime = "com.apollographql.apollo3:apollo-runtime:${Versions.apollo}"
+    const val apolloNormalizedCache = "com.apollographql.apollo3:apollo-normalized-cache:${Versions.apollo}"
 }
 
 object Compose {
+    const val compiler = "androidx.compose.compiler:compiler:${Versions.composeCompiler}"
     const val ui = "androidx.compose.ui:ui:${Versions.compose}"
     const val runtime = "androidx.compose.runtime:runtime:${Versions.compose}"
     const val uiGraphics = "androidx.compose.ui:ui-graphics:${Versions.compose}"
     const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
     const val foundationLayout = "androidx.compose.foundation:foundation-layout:${Versions.compose}"
     const val material = "androidx.compose.material:material:${Versions.compose}"
-    const val navigation = "androidx.navigation:navigation-compose:${Versions.nav_compose}"
+    const val navigation = "androidx.navigation:navigation-compose:${Versions.navCompose}"
 }
 
 object Google {

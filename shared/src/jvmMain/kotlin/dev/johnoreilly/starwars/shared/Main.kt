@@ -1,13 +1,16 @@
 package dev.johnoreilly.starwars.shared
 
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
 
 fun main() = runBlocking {
 
     val repo = StarWarsRepository()
-    val people = repo.getPeople()
-    println(people)
+    repo.people.collect {
+        println(it)
+    }
 
-    val films = repo.getFilms()
-    println(films)
+    repo.films.collect {
+        println(it)
+    }
 }
