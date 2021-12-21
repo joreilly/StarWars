@@ -5,13 +5,11 @@ buildscript {
         mavenCentral()
     }
 
-    val kotlinVersion: String by project
-    println("kotlinVersion = $kotlinVersion")
-
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}")
         classpath("com.android.tools.build:gradle:7.0.4")
         classpath("com.apollographql.apollo3:apollo-gradle-plugin:${Versions.apollo}")
+        classpath("com.rickclephas.kmp:kmp-nativecoroutines-gradle-plugin:${Versions.kmpNativeCoroutines}")
     }
 }
 
@@ -20,5 +18,6 @@ allprojects {
         google()
         mavenCentral()
         maven("https://maven.pkg.jetbrains.space/public/p/kotlinx-coroutines/maven")
+        maven(url = "https://maven.pkg.jetbrains.space/public/p/ktor/eap")
     }
 }

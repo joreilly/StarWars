@@ -20,6 +20,7 @@ struct ContentView: View {
 }
 
 
+extension Person: Identifiable { }
 
 struct PeopleView: View {
     @StateObject private var viewModel = StarWarsViewModel()
@@ -30,8 +31,8 @@ struct PeopleView: View {
                 PersonView(person: person)
             }
             .navigationTitle("Star Wars")
-            .onAppear {
-                viewModel.fetchPeople()
+            .task {
+                await viewModel.startObservingPeople()
             }
         }
     }
@@ -48,18 +49,21 @@ struct PersonView: View {
     }
 }
 
+
+extension Film: Identifiable { }
+
 struct FilmListView: View {
     @StateObject private var viewModel = StarWarsViewModel()
     
     var body: some View {
         
         NavigationView {
-            List(viewModel.filmList, id: \.id) { film in
+            List(viewModel.filmList) { film in
                 FilmView(film: film)
             }
             .navigationTitle("Films")
-            .onAppear {
-                viewModel.fetchFilms()
+            .task {
+                await viewModel.startObservingFilms()
             }
         }
     }

@@ -1,23 +1,9 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("com.apollographql.apollo3")
+    id("com.rickclephas.kmp.nativecoroutines")
 }
-
-// workaround for https://youtrack.jetbrains.com/issue/KT-43944
-android {
-    configurations {
-        create("androidTestApi")
-        create("androidTestDebugApi")
-        create("androidTestReleaseApi")
-        create("testApi")
-        create("testDebugApi")
-        create("testReleaseApi")
-    }
-}
-
 
 kotlin {
     android()
@@ -34,7 +20,10 @@ kotlin {
                     isForce = true
                 }
 
-                api(Deps.apolloRuntime)
+                with(Apollo) {
+                    implementation(apolloRuntime)
+                    implementation(apolloNormalizedCache)
+                }
             }
         }
 
@@ -89,26 +78,7 @@ android {
         targetSdk = AndroidSdk.target
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
 }
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-}
-
-kotlin.sourceSets.all {
-    languageSettings.apply {
-        useExperimentalAnnotation("kotlin.RequiresOptIn")
-        useExperimentalAnnotation("kotlinx.coroutines.ExperimentalCoroutinesApi")
-        useExperimentalAnnotation("com.apollographql.apollo3.api.ApolloExperimental")
-    }
-}
-
 
 apollo {
     packageName.set("dev.johnoreilly.starwars")

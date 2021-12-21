@@ -56,13 +56,9 @@ fun MainLayout() {
     val navController = rememberNavController()
     val repo = remember { StarWarsRepository() }
 
-    val people by produceState(initialValue = emptyList<Person>(), repo) {
-        value = repo.getPeople()
-    }
+    val people by repo.people.collectAsState(emptyList())
+    val filmList by repo.films.collectAsState(emptyList())
 
-    val filmList by produceState(initialValue = emptyList<Film>(), repo) {
-        value = repo.getFilms()
-    }
 
     Scaffold(
         topBar = { StarWarsTopAppBar("Star Wars") },

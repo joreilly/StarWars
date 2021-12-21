@@ -20,7 +20,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
+        kotlinCompilerExtensionVersion = Versions.composeCompiler
     }
 
     buildTypes {
@@ -52,6 +52,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 dependencies {
     implementation(project(":shared"))
 
+    implementation(Compose.compiler)
     implementation(Compose.ui)
     implementation(Compose.uiGraphics)
     implementation(Compose.uiTooling)
