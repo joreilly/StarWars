@@ -3,8 +3,8 @@ object Versions {
     const val kotlinVersion = "1.6.10"
     const val apollo = "3.0.0"
 
-    const val kotlinCoroutines = "1.6.0-RC"
-    const val ktor = "2.0.0-eap-278"
+    const val kotlinCoroutines = "1.6.0"
+    const val ktor = "2.0.0-eap-283"
     const val kotlinxSerialization = "1.3.1"
     const val slf4j = "1.7.30"
 
@@ -13,7 +13,7 @@ object Versions {
     const val navCompose = "2.4.0-rc01"
     const val accompanist = "0.21.0-beta"
 
-    const val kmpNativeCoroutines = "0.10.0-new-mm"
+    const val kmpNativeCoroutines = "0.11.1-new-mm"
 
     const val junit = "4.13"
 }
@@ -53,7 +53,7 @@ object Ktor {
     const val serialization = "io.ktor:ktor-serialization:${Versions.ktor}"
     const val clientJson = "io.ktor:ktor-client-json:${Versions.ktor}"
     const val slf4j = "org.slf4j:slf4j-simple:${Versions.slf4j}"
-    const val ktorGraphql = "com.apurebase:kgraphql-ktor:0.17.9"
+    const val ktorGraphql = "com.apurebase:kgraphql-ktor:0.17.14"
 }
 
 object Kotlinx {
