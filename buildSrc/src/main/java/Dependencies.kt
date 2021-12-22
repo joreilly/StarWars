@@ -3,7 +3,7 @@ object Versions {
     const val kotlinVersion = "1.6.10"
     const val apollo = "3.0.0"
 
-    const val kotlinCoroutines = "1.6.0-RC"
+    const val kotlinCoroutines = "1.6.0"
     const val ktor = "2.0.0-eap-278"
     const val kotlinxSerialization = "1.3.1"
     const val slf4j = "1.7.30"
