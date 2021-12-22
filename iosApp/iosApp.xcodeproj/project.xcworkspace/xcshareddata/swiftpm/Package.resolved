@@ -5,9 +5,9 @@
         "package": "KMPNativeCoroutines",
         "repositoryURL": "https://github.com/rickclephas/KMP-NativeCoroutines.git",
         "state": {
-          "branch": "master",
-          "revision": "37ac6c8f82d218819db976bedc2fd3a2919d3996",
-          "version": null
+          "branch": null,
+          "revision": "cbc975ed40d412c6d3c9d1d4cd35096165824b88",
+          "version": "0.11.1"
         }
       },
       {
