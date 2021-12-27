@@ -33,3 +33,4 @@ gradle-app.setting
 *.xcscheme
 xcschememanagement.plist
 *.xcbkptlist
+/wearApp/build/
