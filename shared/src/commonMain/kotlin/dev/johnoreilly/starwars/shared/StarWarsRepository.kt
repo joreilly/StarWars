@@ -1,6 +1,7 @@
 package dev.johnoreilly.starwars.shared
 
 import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.api.Query
 import com.apollographql.apollo3.cache.normalized.watch
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutineScope
 import dev.johnoreilly.starwars.GetAllFilmsQuery
@@ -12,6 +13,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okio.IOException
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -30,12 +32,17 @@ class StarWarsRepository: KoinComponent {
     }
 
     suspend fun prefetch() = withContext(Dispatchers.Default) {
-        launch {
-            apolloClient.query(GetAllPeopleQuery()).execute()
-        }
-        launch {
-            apolloClient.query(GetAllFilmsQuery()).execute()
-        }
+        prefetch(GetAllPeopleQuery())
+        prefetch(GetAllFilmsQuery())
     }
 
+    private fun CoroutineScope.prefetch(query: Query<*>) {
+        launch {
+            try {
+                apolloClient.query(query).execute()
+            } catch (ioe: IOException) {
+                // ignore prefetch failure
+            }
+        }
+    }
 }
