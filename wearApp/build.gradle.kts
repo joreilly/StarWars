@@ -65,6 +65,6 @@ dependencies {
     implementation(Compose.wearMaterial)
     implementation(Compose.wearNavigation)
 
-    implementation("com.google.accompanist:accompanist-pager:0.20.0")
-    implementation("com.google.accompanist:accompanist-pager-indicators:0.20.0")
+    implementation(Google.Accompanist.pager)
+    implementation(Google.Accompanist.pagerIndicator)
 }

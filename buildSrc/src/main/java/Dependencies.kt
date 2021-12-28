@@ -53,6 +53,8 @@ object Compose {
 object Google {
     object Accompanist {
         const val insets = "com.google.accompanist:accompanist-insets:${Versions.accompanist}"
+        const val pager = "com.google.accompanist:accompanist-pager:${Versions.accompanist}"
+        const val pagerIndicator = "com.google.accompanist:accompanist-pager-indicators:${Versions.accompanist}"
     }
 }
 
