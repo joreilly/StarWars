@@ -4,40 +4,33 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.wear.compose.material.Card
-import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.PositionIndicator
 import androidx.wear.compose.material.Scaffold
-import androidx.wear.compose.material.ScalingLazyColumn
-import androidx.wear.compose.material.ScalingLazyListState
-import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.Vignette
 import androidx.wear.compose.material.VignettePosition
 import androidx.wear.compose.material.rememberScalingLazyListState
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
+import com.apollographql.apollo3.cache.normalized.sql.SqlNormalizedCacheFactory
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import dev.johnoreilly.starwars.shared.StarWarsRepository
-import dev.johnoreilly.starwars.shared.model.Person
-import dev.johnoreilly.starwars.wearApp.compose.rotaryEventHandler
 import dev.johnoreilly.starwars.wearApp.film.FilmList
+import dev.johnoreilly.starwars.wearApp.people.PeopleList
 import dev.johnoreilly.starwars.wearApp.theme.StarWarsTheme
 
 class MainActivity : ComponentActivity() {
@@ -59,7 +52,7 @@ sealed class Screen(val title: String) {
 @Composable
 fun MainLayout() {
     val navController = rememberSwipeDismissableNavController()
-    val repo = remember { StarWarsRepository() }
+    val repo = rememberStarWarsRepository()
 
     val people by repo.people.collectAsState(emptyList())
     val films by repo.films.collectAsState(emptyList())
@@ -101,41 +94,12 @@ fun MainLayout() {
 }
 
 @Composable
-fun PeopleList(
-    people: List<Person>,
-    scrollState: ScalingLazyListState = rememberScalingLazyListState(),
-) {
-    val configuration = LocalConfiguration.current
-    val verticalPadding = remember {
-        if (configuration.isScreenRound) 20.dp else 0.dp
+private fun rememberStarWarsRepository(): StarWarsRepository {
+    val context = LocalContext.current.applicationContext
+    val sqlNormalizedCacheFactory = remember { SqlNormalizedCacheFactory(context, "swapi.db") }
+    val repo = remember { StarWarsRepository(dbCacheFactory = sqlNormalizedCacheFactory) }
+    LaunchedEffect(Unit) {
+        repo.prefetch()
     }
-
-    ScalingLazyColumn(
-        modifier = Modifier
-            .rotaryEventHandler(scrollState)
-            .padding(horizontal = 4.dp),
-        contentPadding = PaddingValues(
-            horizontal = 8.dp,
-            vertical = 8.dp + verticalPadding
-        ),
-        state = scrollState,
-    ) {
-        items(people.size) {
-            PersonView(people[it])
-        }
-    }
-}
-
-@Composable
-fun PersonView(person: Person) {
-    Card(onClick = { }) {
-        Column(modifier = Modifier.fillMaxWidth()) {
-            Text(person.name, style = MaterialTheme.typography.title3)
-            Text(
-                person.homeWorld,
-                style = MaterialTheme.typography.body1,
-                color = Color.DarkGray
-            )
-        }
-    }
+    return repo
 }

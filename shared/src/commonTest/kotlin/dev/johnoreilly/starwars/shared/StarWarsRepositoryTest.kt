@@ -1,8 +1,7 @@
 package dev.johnoreilly.starwars.shared
 
-import com.apollographql.apollo.api.ApolloExperimental
+import com.apollographql.apollo3.annotations.ApolloExperimental
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.flow.collect
 import kotlin.test.Test
 
 class StarWarsRepositoryTest: BaseTest() {
@@ -11,14 +10,14 @@ class StarWarsRepositoryTest: BaseTest() {
     @InternalCoroutinesApi
     @Test
     fun testExample() = runTest {
-        val repo = StarWarsRepository()
-        repo.getPeople().collect { people ->
+        val repo = StarWarsRepository(dbCacheFactory = null)
+        repo.people.collect { people ->
             people.forEach {
                 println(it.name)
             }
         }
 
-        repo.getFilms().collect { films ->
+        repo.films.collect { films ->
             films.forEach {
                 println(it.title)
             }

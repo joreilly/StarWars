@@ -61,4 +61,6 @@ dependencies {
     implementation(Compose.navigation)
 
     implementation(Google.Accompanist.insets)
+
+    implementation(Apollo.apolloNormalizedCacheSqliteAndroid)
 }
