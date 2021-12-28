@@ -2,6 +2,7 @@
 object Versions {
     const val kotlinVersion = "1.6.10"
     const val apollo = "3.0.0"
+    const val koin = "3.1.4"
 
     const val kotlinCoroutines = "1.6.0"
     const val ktor = "2.0.0-eap-283"
@@ -30,8 +31,8 @@ object AndroidSdk {
 
 object Apollo {
     const val apolloRuntime = "com.apollographql.apollo3:apollo-runtime:${Versions.apollo}"
-    const val apolloNormalizedCache = "com.apollographql.apollo3:apollo-normalized-cache:${Versions.apollo}"
-    const val apolloNormalizedCacheSqliteAndroid = "com.apollographql.apollo3:apollo-normalized-cache-sqlite-android-debug:${Versions.apollo}"
+    const val apolloNormalizedCacheInMemory = "com.apollographql.apollo3:apollo-normalized-cache:${Versions.apollo}"
+    const val apolloNormalizedCacheSqlite = "com.apollographql.apollo3:apollo-normalized-cache-sqlite:${Versions.apollo}"
 }
 
 object Compose {
@@ -72,6 +73,14 @@ object Kotlinx {
     const val serializationCore = "org.jetbrains.kotlinx:kotlinx-serialization-core:${Versions.kotlinxSerialization}"
     const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}"
 }
+
+object Koin {
+    val core = "io.insert-koin:koin-core:${Versions.koin}"
+    val test = "io.insert-koin:koin-test:${Versions.koin}"
+    val android = "io.insert-koin:koin-android:${Versions.koin}"
+    val compose = "io.insert-koin:koin-androidx-compose:${Versions.koin}"
+}
+
 
 
 

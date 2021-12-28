@@ -14,17 +14,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.wear.compose.material.PositionIndicator
-import androidx.wear.compose.material.Scaffold
-import androidx.wear.compose.material.Vignette
-import androidx.wear.compose.material.VignettePosition
-import androidx.wear.compose.material.rememberScalingLazyListState
+import androidx.wear.compose.material.*
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
-import com.apollographql.apollo3.cache.normalized.sql.SqlNormalizedCacheFactory
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
@@ -49,6 +43,7 @@ sealed class Screen(val title: String) {
     object Lists : Screen("Lists")
 }
 
+@OptIn(ExperimentalWearMaterialApi::class)
 @Composable
 fun MainLayout() {
     val navController = rememberSwipeDismissableNavController()
@@ -95,9 +90,7 @@ fun MainLayout() {
 
 @Composable
 private fun rememberStarWarsRepository(): StarWarsRepository {
-    val context = LocalContext.current.applicationContext
-    val sqlNormalizedCacheFactory = remember { SqlNormalizedCacheFactory(context, "swapi.db") }
-    val repo = remember { StarWarsRepository(dbCacheFactory = sqlNormalizedCacheFactory) }
+    val repo = remember { StarWarsRepository() }
     LaunchedEffect(Unit) {
         repo.prefetch()
     }

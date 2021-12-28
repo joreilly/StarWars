@@ -23,7 +23,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
@@ -32,7 +31,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.apollographql.apollo3.cache.normalized.sql.SqlNormalizedCacheFactory
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.insets.statusBarsPadding
@@ -40,6 +38,7 @@ import dev.johnoreilly.starwars.androidApp.theme.StarWarsTheme
 import dev.johnoreilly.starwars.shared.StarWarsRepository
 import dev.johnoreilly.starwars.shared.model.Film
 import dev.johnoreilly.starwars.shared.model.Person
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,9 +93,7 @@ fun MainLayout() {
 
 @Composable
 private fun rememberStarWarsRepository(): StarWarsRepository {
-    val context = LocalContext.current.applicationContext
-    val sqlNormalizedCacheFactory = remember { SqlNormalizedCacheFactory(context, "swapi.db") }
-    val repo = remember { StarWarsRepository(dbCacheFactory = sqlNormalizedCacheFactory) }
+    val repo = remember { StarWarsRepository() }
     LaunchedEffect(Unit) {
         repo.prefetch()
     }
