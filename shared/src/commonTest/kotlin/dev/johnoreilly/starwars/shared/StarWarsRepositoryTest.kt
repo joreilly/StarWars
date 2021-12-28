@@ -6,11 +6,12 @@ import kotlin.test.Test
 
 class StarWarsRepositoryTest: BaseTest() {
 
+
     @ApolloExperimental
     @InternalCoroutinesApi
     @Test
     fun testExample() = runTest {
-        val repo = StarWarsRepository(dbCacheFactory = null)
+        val repo = StarWarsRepository()
         repo.people.collect { people ->
             people.forEach {
                 println(it.name)

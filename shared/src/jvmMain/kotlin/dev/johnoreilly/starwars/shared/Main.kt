@@ -1,9 +1,11 @@
 package dev.johnoreilly.starwars.shared
 
+import dev.johnoreilly.starwars.shared.di.initKoin
 import kotlinx.coroutines.runBlocking
 
 fun main() = runBlocking {
-    val repo = StarWarsRepository(dbCacheFactory = null)
+    val koin = initKoin().koin
+    val repo = koin.get<StarWarsRepository>()
 
     repo.people.collect {
         println(it)

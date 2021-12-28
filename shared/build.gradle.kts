@@ -16,19 +16,25 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api("org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}") {
+                api(Kotlinx.coroutinesCore) {
                     isForce = true
+                }
+
+                with(Koin) {
+                    api(core)
                 }
 
                 with(Apollo) {
                     implementation(apolloRuntime)
-                    implementation(apolloNormalizedCache)
+                    implementation(apolloNormalizedCacheInMemory)
+                    implementation(apolloNormalizedCacheSqlite)
                 }
             }
         }
 
         val commonTest by getting {
             dependencies {
+                implementation(Koin.test)
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
@@ -40,7 +46,7 @@ kotlin {
         val androidTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
-                implementation("junit:junit:4.13")
+                implementation("junit:junit:4.13.2")
             }
         }
 

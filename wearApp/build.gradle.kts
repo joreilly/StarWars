@@ -43,7 +43,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
         freeCompilerArgs = listOf("-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check",
             "-Xuse-experimental=com.apollographql.apollo.api.ApolloExperimental",
-            "-opt-in=androidx.wear.compose.material.ExperimentalWearMaterialApi",
+            "-opt-in=androidx.wear.material.ExperimentalWearMaterialApi",
             "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi"
         )
     }
@@ -53,20 +53,24 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 dependencies {
     implementation(project(":shared"))
 
-    implementation(Compose.compiler)
-    implementation(Compose.ui)
-    implementation(Compose.uiGraphics)
-    implementation(Compose.uiTooling)
-    implementation(Compose.foundationLayout)
+    with (Compose) {
+        implementation(compiler)
+        implementation(ui)
+        implementation(uiGraphics)
+        implementation(uiTooling)
+        implementation(foundationLayout)
+        implementation(activityCompose)
+        implementation(wearFoundation)
+        implementation(wearMaterial)
+        implementation(wearNavigation)
+    }
 
-    implementation(Compose.activityCompose)
-
-    implementation(Compose.wearFoundation)
-    implementation(Compose.wearMaterial)
-    implementation(Compose.wearNavigation)
+    with (Koin) {
+        implementation(core)
+        implementation(android)
+        implementation(compose)
+    }
 
     implementation(Google.Accompanist.pager)
     implementation(Google.Accompanist.pagerIndicator)
-
-    implementation(Apollo.apolloNormalizedCacheSqliteAndroid)
 }

@@ -52,15 +52,21 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 dependencies {
     implementation(project(":shared"))
 
-    implementation(Compose.compiler)
-    implementation(Compose.ui)
-    implementation(Compose.uiGraphics)
-    implementation(Compose.uiTooling)
-    implementation(Compose.foundationLayout)
-    implementation(Compose.material)
-    implementation(Compose.navigation)
+    with (Compose) {
+        implementation(compiler)
+        implementation(ui)
+        implementation(uiGraphics)
+        implementation(uiTooling)
+        implementation(foundationLayout)
+        implementation(material)
+        implementation(navigation)
+    }
+
+    with (Koin) {
+        implementation(core)
+        implementation(android)
+        implementation(compose)
+    }
 
     implementation(Google.Accompanist.insets)
-
-    implementation(Apollo.apolloNormalizedCacheSqliteAndroid)
 }
