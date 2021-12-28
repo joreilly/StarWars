@@ -31,6 +31,7 @@ object AndroidSdk {
 object Apollo {
     const val apolloRuntime = "com.apollographql.apollo3:apollo-runtime:${Versions.apollo}"
     const val apolloNormalizedCache = "com.apollographql.apollo3:apollo-normalized-cache:${Versions.apollo}"
+    const val apolloNormalizedCacheSqliteAndroid = "com.apollographql.apollo3:apollo-normalized-cache-sqlite-android-debug:${Versions.apollo}"
 }
 
 object Compose {

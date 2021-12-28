@@ -67,4 +67,6 @@ dependencies {
 
     implementation(Google.Accompanist.pager)
     implementation(Google.Accompanist.pagerIndicator)
+
+    implementation(Apollo.apolloNormalizedCacheSqliteAndroid)
 }
