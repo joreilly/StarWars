@@ -1,10 +1,7 @@
 package dev.johnoreilly.starwars.shared
 
 import com.apollographql.apollo3.ApolloClient
-import com.apollographql.apollo3.api.Query
-import com.apollographql.apollo3.cache.normalized.apolloStore
 import com.apollographql.apollo3.cache.normalized.watch
-import com.apollographql.apollo3.exception.CacheMissException
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutineScope
 import dev.johnoreilly.starwars.GetAllFilmsQuery
 import dev.johnoreilly.starwars.GetAllPeopleQuery
@@ -34,18 +31,11 @@ class StarWarsRepository: KoinComponent {
 
     suspend fun prefetch() = withContext(Dispatchers.Default) {
         launch {
-            prefetch(GetAllPeopleQuery())
+            apolloClient.query(GetAllPeopleQuery()).execute()
         }
         launch {
-            prefetch(GetAllFilmsQuery())
+            apolloClient.query(GetAllFilmsQuery()).execute()
         }
     }
 
-    suspend fun prefetch(query: Query<*>) {
-        try {
-            apolloClient.apolloStore.readOperation(query)
-        } catch (e: CacheMissException) {
-            apolloClient.query(query).execute()
-        }
-    }
 }
