@@ -43,7 +43,8 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
         freeCompilerArgs = listOf("-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check",
             "-Xuse-experimental=com.apollographql.apollo.api.ApolloExperimental",
-            "-opt-in=androidx.wear.compose.material.ExperimentalWearMaterialApi"
+            "-opt-in=androidx.wear.compose.material.ExperimentalWearMaterialApi",
+            "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi"
         )
     }
 }
@@ -63,4 +64,7 @@ dependencies {
     implementation(Compose.wearFoundation)
     implementation(Compose.wearMaterial)
     implementation(Compose.wearNavigation)
+
+    implementation("com.google.accompanist:accompanist-pager:0.20.0")
+    implementation("com.google.accompanist:accompanist-pager-indicators:0.20.0")
 }
