@@ -1,28 +1,50 @@
 package dev.johnoreilly.starwars.shared
 
-import com.apollographql.apollo3.annotations.ApolloExperimental
-import kotlinx.coroutines.InternalCoroutinesApi
+import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
+import com.apollographql.apollo3.cache.normalized.api.NormalizedCache
+import com.apollographql.apollo3.cache.normalized.api.NormalizedCacheFactory
+import dev.johnoreilly.starwars.shared.di.commonModule
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.test.runTest
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
+import org.koin.test.KoinTest
+import org.koin.test.inject
+import kotlin.test.BeforeTest
 import kotlin.test.Test
+import kotlin.test.assertTrue
 
-class StarWarsRepositoryTest: BaseTest() {
 
+@OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
+class StarWarsRepositoryTest: KoinTest {
 
-    @ApolloExperimental
-    @InternalCoroutinesApi
+    val repo : StarWarsRepository by inject()
+
+    @BeforeTest
+    fun setUp() {
+        startKoin{
+            modules(
+                commonModule(),
+                module {
+                    single<NormalizedCacheFactory> { FakeCacheFactory() }
+                })
+        }
+    }
+
     @Test
-    fun testExample() = runTest {
-        val repo = StarWarsRepository()
-        repo.people.collect { people ->
-            people.forEach {
-                println(it.name)
-            }
-        }
+    fun testStarWars() = runTest {
+        val people = repo.people.first()
+        assertTrue(people.isNotEmpty())
+        println(people)
 
-        repo.films.collect { films ->
-            films.forEach {
-                println(it.title)
-            }
-        }
+        val films = repo.films.first()
+        assertTrue(films.isNotEmpty())
+        println(films)
+    }
+}
 
+class FakeCacheFactory: NormalizedCacheFactory() {
+    override fun create(): NormalizedCache {
+        return MemoryCacheFactory().create()
     }
 }

@@ -2,6 +2,7 @@ package dev.johnoreilly.starwars.shared.di
 
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
+import com.apollographql.apollo3.cache.normalized.api.NormalizedCacheFactory
 import com.apollographql.apollo3.cache.normalized.normalizedCache
 import com.apollographql.apollo3.cache.normalized.sql.SqlNormalizedCacheFactory
 import dev.johnoreilly.starwars.shared.StarWarsRepository
@@ -26,7 +27,7 @@ fun commonModule() = module {
     single { createApolloClient(get()) }
 }
 
-fun createApolloClient(sqlNormalizedCacheFactory: SqlNormalizedCacheFactory): ApolloClient {
+fun createApolloClient(sqlNormalizedCacheFactory: NormalizedCacheFactory): ApolloClient {
     val memoryFirstThenSqlCacheFactory = MemoryCacheFactory(10 * 1024 * 1024)
         .chain(sqlNormalizedCacheFactory)
 
