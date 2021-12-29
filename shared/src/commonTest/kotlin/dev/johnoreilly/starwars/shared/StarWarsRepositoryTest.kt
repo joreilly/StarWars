@@ -1,8 +1,8 @@
 package dev.johnoreilly.starwars.shared
 
-import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
-import com.apollographql.apollo3.cache.normalized.api.NormalizedCache
-import com.apollographql.apollo3.cache.normalized.api.NormalizedCacheFactory
+import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.mockserver.MockResponse
+import com.apollographql.apollo3.mockserver.MockServer
 import dev.johnoreilly.starwars.shared.di.commonModule
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
@@ -12,39 +12,48 @@ import org.koin.test.KoinTest
 import org.koin.test.inject
 import kotlin.test.BeforeTest
 import kotlin.test.Test
-import kotlin.test.assertTrue
+import kotlin.test.assertEquals
 
 
 @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
 class StarWarsRepositoryTest: KoinTest {
+    private val repo : StarWarsRepository by inject()
 
-    val repo : StarWarsRepository by inject()
+    private val mockServer = MockServer()
+    private lateinit var mockServerUrl: String
 
     @BeforeTest
-    fun setUp() {
+    fun setUp()  {
         startKoin{
             modules(
                 commonModule(),
                 module {
-                    single<NormalizedCacheFactory> { FakeCacheFactory() }
+                    single { createMockApolloClient(mockServerUrl) }
                 })
         }
     }
 
     @Test
-    fun testStarWars() = runTest {
+    fun testStarWarsRepository() = runTest {
+        mockServerUrl = mockServer.url()
+
+        mockServer.enqueue(MockResponse(body = getAllPeopleMockResponse))
         val people = repo.people.first()
-        assertTrue(people.isNotEmpty())
+        assertEquals(2, people.size)
         println(people)
 
+        mockServer.enqueue(MockResponse(body = getAllFilmsMockResponse))
         val films = repo.films.first()
-        assertTrue(films.isNotEmpty())
+        assertEquals(2, films.size)
         println(films)
     }
+
+    fun createMockApolloClient(url: String): ApolloClient {
+        println("createMockApolloClient, ur = $url")
+        return ApolloClient.Builder()
+            .serverUrl(url)
+            .build()
+    }
+
 }
 
-class FakeCacheFactory: NormalizedCacheFactory() {
-    override fun create(): NormalizedCache {
-        return MemoryCacheFactory().create()
-    }
-}

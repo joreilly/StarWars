@@ -36,6 +36,8 @@ kotlin {
             dependencies {
                 implementation(Koin.test)
                 implementation(Kotlinx.coroutinesTest)
+                implementation(Apollo.apolloMockServer)
+
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
