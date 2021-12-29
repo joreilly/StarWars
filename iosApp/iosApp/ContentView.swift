@@ -39,18 +39,18 @@ struct PeopleView: View {
 }
 
 struct PersonView: View {
-    var person: Person
+    var person: PersonFragment
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(person.name).font(.headline)
-            Text(person.homeWorld).font(.subheadline)
+            Text(person.homeworld.name).font(.subheadline)
         }
     }
 }
 
 
-extension Film: Identifiable { }
+extension FilmFragment: Identifiable { }
 
 struct FilmListView: View {
     @StateObject private var viewModel = StarWarsViewModel()
@@ -70,7 +70,7 @@ struct FilmListView: View {
 }
 
 struct FilmView: View {
-    var film: Film
+    var film: FilmFragment
     
     var body: some View {
         HStack {
