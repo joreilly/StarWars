@@ -16,12 +16,12 @@ import androidx.wear.compose.material.ScalingLazyColumn
 import androidx.wear.compose.material.ScalingLazyListState
 import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.rememberScalingLazyListState
-import dev.johnoreilly.starwars.shared.model.Person
+import dev.johnoreilly.starwars.fragment.PersonFragment
 import dev.johnoreilly.starwars.wearApp.compose.rotaryEventHandler
 
 @Composable
 fun PeopleList(
-    people: List<Person>,
+    people: List<PersonFragment>,
     scrollState: ScalingLazyListState = rememberScalingLazyListState(),
 ) {
     val configuration = LocalConfiguration.current
@@ -46,12 +46,12 @@ fun PeopleList(
 }
 
 @Composable
-fun PersonView(person: Person) {
+fun PersonView(person: PersonFragment) {
     Card(onClick = { }) {
         Column(modifier = Modifier.fillMaxWidth()) {
             Text(person.name, style = MaterialTheme.typography.title3)
             Text(
-                person.homeWorld,
+                person.homeworld.name,
                 style = MaterialTheme.typography.body1,
                 color = Color.DarkGray
             )

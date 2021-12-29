@@ -15,12 +15,12 @@ import androidx.wear.compose.material.ScalingLazyColumn
 import androidx.wear.compose.material.ScalingLazyListState
 import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.rememberScalingLazyListState
-import dev.johnoreilly.starwars.shared.model.Film
+import dev.johnoreilly.starwars.fragment.FilmFragment
 import dev.johnoreilly.starwars.wearApp.compose.rotaryEventHandler
 
 @Composable
 fun FilmList(
-    films: List<Film>,
+    films: List<FilmFragment>,
     scrollState: ScalingLazyListState = rememberScalingLazyListState(),
 ) {
     val configuration = LocalConfiguration.current
@@ -45,7 +45,7 @@ fun FilmList(
 }
 
 @Composable
-fun FilmView(film: Film) {
+fun FilmView(film: FilmFragment) {
     Card(onClick = { }) {
         Column(modifier = Modifier.fillMaxWidth()) {
             Text(film.title, style = MaterialTheme.typography.title3)

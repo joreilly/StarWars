@@ -35,9 +35,9 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.insets.statusBarsPadding
 import dev.johnoreilly.starwars.androidApp.theme.StarWarsTheme
+import dev.johnoreilly.starwars.fragment.FilmFragment
+import dev.johnoreilly.starwars.fragment.PersonFragment
 import dev.johnoreilly.starwars.shared.StarWarsRepository
-import dev.johnoreilly.starwars.shared.model.Film
-import dev.johnoreilly.starwars.shared.model.Person
 
 
 class MainActivity : ComponentActivity() {
@@ -135,7 +135,7 @@ private fun StarWarsBottomNavigation(navController: NavHostController) {
 }
 
 @Composable
-fun PeopleList(people: List<Person>) {
+fun PeopleList(people: List<PersonFragment>) {
     LazyColumn {
         items(people) { person ->
             PersonView(person)
@@ -145,17 +145,17 @@ fun PeopleList(people: List<Person>) {
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun PersonView(person: Person) {
+fun PersonView(person: PersonFragment) {
     ListItem(
         text = { Text(person.name, style = MaterialTheme.typography.h6) },
-        secondaryText = { Text(person.homeWorld, style = MaterialTheme.typography.subtitle1, color = Color.DarkGray) }
+        secondaryText = { Text(person.homeworld.name, style = MaterialTheme.typography.subtitle1, color = Color.DarkGray) }
     )
     Divider()
 }
 
 
 @Composable
-fun FilmList(filmList: List<Film>) {
+fun FilmList(filmList: List<FilmFragment>) {
     LazyColumn {
         items(items = filmList, itemContent = { film ->
             FilmView(film)
@@ -166,7 +166,7 @@ fun FilmList(filmList: List<Film>) {
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun FilmView(film: Film) {
+fun FilmView(film: FilmFragment) {
     ListItem(
         text = { Text(film.title, style = MaterialTheme.typography.h6) },
         secondaryText = { Text(film.director, style = MaterialTheme.typography.subtitle1, color = Color.DarkGray) }

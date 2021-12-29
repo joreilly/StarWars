@@ -8,7 +8,6 @@ import com.apollographql.apollo3.exception.CacheMissException
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutineScope
 import dev.johnoreilly.starwars.GetAllFilmsQuery
 import dev.johnoreilly.starwars.GetAllPeopleQuery
-import dev.johnoreilly.starwars.shared.model.mapToModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
@@ -25,11 +24,11 @@ class StarWarsRepository: KoinComponent {
     private val apolloClient: ApolloClient by inject()
 
     val people = apolloClient.query(GetAllPeopleQuery()).watch().map {
-        it.dataAssertNoErrors.allPeople.people.mapNotNull { it?.personFragment?.mapToModel() }
+        it.dataAssertNoErrors.allPeople.people.mapNotNull { it?.personFragment }
     }
 
     val films = apolloClient.query(GetAllFilmsQuery()).watch().map {
-        it.dataAssertNoErrors.allFilms.films.mapNotNull { it?.filmFragment?.mapToModel() }
+        it.dataAssertNoErrors.allFilms.films.mapNotNull { it?.filmFragment }
     }
 
     suspend fun prefetch() = withContext(Dispatchers.Default) {

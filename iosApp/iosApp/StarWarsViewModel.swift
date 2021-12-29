@@ -7,8 +7,8 @@ import KMPNativeCoroutinesAsync
 @MainActor
 class StarWarsViewModel: ObservableObject {
     let repository = StarWarsRepository()
-    @Published public var peopleList: [Person] = []
-    @Published public var filmList: [Film] = []
+    @Published public var peopleList: [PersonFragment] = []
+    @Published public var filmList: [FilmFragment] = []
     
     
     func startObservingPeople() async {
