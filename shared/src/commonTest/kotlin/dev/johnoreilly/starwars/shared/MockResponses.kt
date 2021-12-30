@@ -1,32 +1,42 @@
 package dev.johnoreilly.starwars.shared
 
-val getAllPeopleMockResponse = """
-    {
-      "data": {
-        "allPeople": {
-            "people": [
-            {
-                "__typename": "PeopleConnection",
-                "id": "cGVvcGxlOjE=",
-                "name": "Luke Skywalker",
-                "homeworld": {
-                    "name": "Tatooine"
-                }
+import com.apollographql.apollo3.api.CustomScalarAdapters
+import com.apollographql.apollo3.api.json.buildJsonString
+import com.apollographql.apollo3.api.json.writeObject
+import com.apollographql.apollo3.api.obj
+import dev.johnoreilly.starwars.GetAllPeopleQuery
+import dev.johnoreilly.starwars.adapter.GetAllPeopleQuery_ResponseAdapter
+import dev.johnoreilly.starwars.test.GetAllPeopleQuery_TestBuilder.Data
+
+val getAllPeopleMockResponse = buildJsonString {
+  writeObject {
+    name("data")
+    GetAllPeopleQuery_ResponseAdapter.Data.obj().toJson(
+      writer = this,
+      customScalarAdapters = CustomScalarAdapters.Empty,
+      value = GetAllPeopleQuery.Data {
+        allPeople = allPeople {
+          people = listOf(
+            person {
+              id = "cGVvcGxlOjE="
+              name = "Luke Skywalker"
+              homeworld = homeworld {
+                name = "Tatooine"
+              }
             },
-            {
-                "__typename": "PeopleConnection",
-                "id": "cGVvcGxlOjI=",
-                "name": "C-3PO",
-                "homeworld": {
-                    "name": "Tatooine"
-                }
-            }                      
-            ]
+            person {
+              id = "cGVvcGxlOjI="
+              name = "C-3PO"
+              homeworld = homeworld {
+                name = "Tatooine"
+              }
+            }
+          )
         }
       }
-    }
-  """.trimIndent()
-
+    )
+  }
+}
 
 val getAllFilmsMockResponse = """
     {
@@ -50,4 +60,5 @@ val getAllFilmsMockResponse = """
       }
     }
   """.trimIndent()
+
 
