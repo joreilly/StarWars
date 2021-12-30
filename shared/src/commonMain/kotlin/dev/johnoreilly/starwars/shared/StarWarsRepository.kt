@@ -7,11 +7,8 @@ import com.rickclephas.kmp.nativecoroutines.NativeCoroutineScope
 import dev.johnoreilly.starwars.GetAllFilmsQuery
 import dev.johnoreilly.starwars.GetAllPeopleQuery
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import okio.IOException
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -30,18 +27,16 @@ class StarWarsRepository: KoinComponent {
         it.dataAssertNoErrors.allFilms.films.mapNotNull { it?.filmFragment }
     }
 
-    suspend fun prefetch() = withContext(Dispatchers.Default) {
+    suspend fun prefetch() {
         prefetch(GetAllPeopleQuery())
         prefetch(GetAllFilmsQuery())
     }
 
-    private fun CoroutineScope.prefetch(query: Query<*>) {
-        launch {
-            try {
-                apolloClient.query(query).execute()
-            } catch (ioe: IOException) {
-                // ignore prefetch failure
-            }
+    private suspend fun prefetch(query: Query<*>) {
+        try {
+            apolloClient.query(query).execute()
+        } catch (ioe: IOException) {
+            // ignore prefetch failure
         }
     }
 }
