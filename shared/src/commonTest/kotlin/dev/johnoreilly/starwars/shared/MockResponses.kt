@@ -1,32 +1,37 @@
 package dev.johnoreilly.starwars.shared
 
-val getAllPeopleMockResponse = """
-    {
-      "data": {
-        "allPeople": {
-            "people": [
-            {
-                "__typename": "PeopleConnection",
-                "id": "cGVvcGxlOjE=",
-                "name": "Luke Skywalker",
-                "homeworld": {
-                    "name": "Tatooine"
-                }
-            },
-            {
-                "__typename": "PeopleConnection",
-                "id": "cGVvcGxlOjI=",
-                "name": "C-3PO",
-                "homeworld": {
-                    "name": "Tatooine"
-                }
-            }                      
-            ]
-        }
-      }
-    }
-  """.trimIndent()
+import com.apollographql.apollo3.api.json.buildJsonString
+import com.apollographql.apollo3.api.json.writeAny
+import com.apollographql.apollo3.api.json.writeObject
+import dev.johnoreilly.starwars.test.GetAllPeopleQuery_TestBuilder
 
+val getAllPeopleMockResponse = buildJsonString {
+  writeObject {
+    name("data")
+    writeAny(
+      GetAllPeopleQuery_TestBuilder.DataBuilder().apply {
+        allPeople = allPeople {
+          people = listOf(
+            person {
+              id = "cGVvcGxlOjE="
+              name = "Luke Skywalker"
+              homeworld = homeworld {
+                name = "Tatooine"
+              }
+            },
+            person {
+              id = "cGVvcGxlOjI="
+              name = "C-3PO"
+              homeworld = homeworld {
+                name = "Tatooine"
+              }
+            }
+          )
+        }
+      }.build()
+    )
+  }
+}
 
 val getAllFilmsMockResponse = """
     {
@@ -50,4 +55,5 @@ val getAllFilmsMockResponse = """
       }
     }
   """.trimIndent()
+
 
