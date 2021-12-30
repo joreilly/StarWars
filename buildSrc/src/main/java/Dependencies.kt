@@ -34,6 +34,7 @@ object Apollo {
     const val apolloNormalizedCacheInMemory = "com.apollographql.apollo3:apollo-normalized-cache:${Versions.apollo}"
     const val apolloNormalizedCacheSqlite = "com.apollographql.apollo3:apollo-normalized-cache-sqlite:${Versions.apollo}"
     const val apolloMockServer = "com.apollographql.apollo3:apollo-mockserver:${Versions.apollo}"
+    const val apolloTestingSupport = "com.apollographql.apollo3:apollo-testing-support:${Versions.apollo}"
 }
 
 object Compose {

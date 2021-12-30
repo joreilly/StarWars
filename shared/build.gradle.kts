@@ -37,7 +37,7 @@ kotlin {
                 implementation(Koin.test)
                 implementation(Kotlinx.coroutinesTest)
                 implementation(Apollo.apolloMockServer)
-
+                implementation(Apollo.apolloTestingSupport)
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }

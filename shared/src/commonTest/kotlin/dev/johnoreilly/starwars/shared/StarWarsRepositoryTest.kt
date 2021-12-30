@@ -3,9 +3,9 @@ package dev.johnoreilly.starwars.shared
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.mockserver.MockResponse
 import com.apollographql.apollo3.mockserver.MockServer
+import com.apollographql.apollo3.testing.runTest
 import dev.johnoreilly.starwars.shared.di.commonModule
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.test.runTest
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 import org.koin.test.KoinTest
