@@ -2,9 +2,7 @@ package dev.johnoreilly.starwars.shared
 
 import com.apollographql.apollo3.ApolloClient
 import com.apollographql.apollo3.api.Query
-import com.apollographql.apollo3.cache.normalized.apolloStore
 import com.apollographql.apollo3.cache.normalized.watch
-import com.apollographql.apollo3.exception.CacheMissException
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutineScope
 import dev.johnoreilly.starwars.GetAllFilmsQuery
 import dev.johnoreilly.starwars.GetAllPeopleQuery
@@ -14,6 +12,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okio.IOException
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -32,19 +31,17 @@ class StarWarsRepository: KoinComponent {
     }
 
     suspend fun prefetch() = withContext(Dispatchers.Default) {
-        launch {
-            prefetch(GetAllPeopleQuery())
-        }
-        launch {
-            prefetch(GetAllFilmsQuery())
-        }
+        prefetch(GetAllPeopleQuery())
+        prefetch(GetAllFilmsQuery())
     }
 
-    suspend fun prefetch(query: Query<*>) {
-        try {
-            apolloClient.apolloStore.readOperation(query)
-        } catch (e: CacheMissException) {
-            apolloClient.query(query).execute()
+    private fun CoroutineScope.prefetch(query: Query<*>) {
+        launch {
+            try {
+                apolloClient.query(query).execute()
+            } catch (ioe: IOException) {
+                // ignore prefetch failure
+            }
         }
     }
 }
