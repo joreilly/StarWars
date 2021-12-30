@@ -1,6 +1,7 @@
 package dev.johnoreilly.starwars.shared
 
 import com.apollographql.apollo3.ApolloClient
+import com.apollographql.apollo3.annotations.ApolloExperimental
 import com.apollographql.apollo3.mockserver.MockResponse
 import com.apollographql.apollo3.mockserver.MockServer
 import com.apollographql.apollo3.testing.runTest
@@ -15,7 +16,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 
-@OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
+@ApolloExperimental
 class StarWarsRepositoryTest: KoinTest {
     private val repo : StarWarsRepository by inject()
 
@@ -48,12 +49,11 @@ class StarWarsRepositoryTest: KoinTest {
         println(films)
     }
 
-    fun createMockApolloClient(url: String): ApolloClient {
+    private fun createMockApolloClient(url: String): ApolloClient {
         println("createMockApolloClient, ur = $url")
         return ApolloClient.Builder()
             .serverUrl(url)
             .build()
     }
-
 }
 
