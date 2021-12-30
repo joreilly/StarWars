@@ -1,20 +1,15 @@
 package dev.johnoreilly.starwars.shared
 
-import com.apollographql.apollo3.api.CustomScalarAdapters
 import com.apollographql.apollo3.api.json.buildJsonString
+import com.apollographql.apollo3.api.json.writeAny
 import com.apollographql.apollo3.api.json.writeObject
-import com.apollographql.apollo3.api.obj
-import dev.johnoreilly.starwars.GetAllPeopleQuery
-import dev.johnoreilly.starwars.adapter.GetAllPeopleQuery_ResponseAdapter
-import dev.johnoreilly.starwars.test.GetAllPeopleQuery_TestBuilder.Data
+import dev.johnoreilly.starwars.test.GetAllPeopleQuery_TestBuilder
 
 val getAllPeopleMockResponse = buildJsonString {
   writeObject {
     name("data")
-    GetAllPeopleQuery_ResponseAdapter.Data.obj().toJson(
-      writer = this,
-      customScalarAdapters = CustomScalarAdapters.Empty,
-      value = GetAllPeopleQuery.Data {
+    writeAny(
+      GetAllPeopleQuery_TestBuilder.DataBuilder().apply {
         allPeople = allPeople {
           people = listOf(
             person {
@@ -33,7 +28,7 @@ val getAllPeopleMockResponse = buildJsonString {
             }
           )
         }
-      }
+      }.build()
     )
   }
 }
