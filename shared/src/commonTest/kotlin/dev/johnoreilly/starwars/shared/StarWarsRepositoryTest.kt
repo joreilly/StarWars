@@ -41,11 +41,15 @@ class StarWarsRepositoryTest: KoinTest {
         mockServer.enqueue(MockResponse(body = getAllPeopleMockResponse))
         val people = repo.people.first()
         assertEquals(2, people.size)
+        assertEquals("Person 1", people[0].name)
+        assertEquals("Home World 1", people[0].homeworld.name)
         println(people)
 
         mockServer.enqueue(MockResponse(body = getAllFilmsMockResponse))
         val films = repo.films.first()
         assertEquals(2, films.size)
+        assertEquals("Film 1", films[0].title)
+        assertEquals("Director 1", films[0].director)
         println(films)
     }
 
