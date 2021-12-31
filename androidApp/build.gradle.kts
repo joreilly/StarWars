@@ -12,6 +12,7 @@ android {
 
         versionCode = 1
         versionName = "1.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
 
@@ -66,6 +67,13 @@ dependencies {
         implementation(core)
         implementation(android)
         implementation(compose)
+    }
+
+    with(Test) {
+        testImplementation(junit)
+        androidTestImplementation(composeUiTest)
+        androidTestImplementation(composeUiTestJUnit)
+        debugImplementation(composeUiTestManifest)
     }
 
     implementation(Google.Accompanist.insets)

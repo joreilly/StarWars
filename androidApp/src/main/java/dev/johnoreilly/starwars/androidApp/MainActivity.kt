@@ -23,6 +23,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
@@ -134,9 +135,11 @@ private fun StarWarsBottomNavigation(navController: NavHostController) {
     }
 }
 
+const val PersonListTag = "PersonList"
+
 @Composable
 fun PeopleList(people: List<PersonFragment>) {
-    LazyColumn {
+    LazyColumn( modifier = Modifier.testTag(PersonListTag)) {
         items(people) { person ->
             PersonView(person)
         }

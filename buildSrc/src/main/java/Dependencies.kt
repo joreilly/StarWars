@@ -72,7 +72,6 @@ object Ktor {
 }
 
 object Kotlinx {
-    const val serializationCore = "org.jetbrains.kotlinx:kotlinx-serialization-core:${Versions.kotlinxSerialization}"
     const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlinCoroutines}"
     const val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinCoroutines}"
 }
@@ -83,6 +82,14 @@ object Koin {
     val android = "io.insert-koin:koin-android:${Versions.koin}"
     val compose = "io.insert-koin:koin-androidx-compose:${Versions.koin}"
 }
+
+object Test {
+    const val junit = "junit:junit:${Versions.junit}"
+    const val composeUiTest = "androidx.compose.ui:ui-test:${Versions.compose}"
+    const val composeUiTestJUnit = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
+    const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
+}
+
 
 
 
