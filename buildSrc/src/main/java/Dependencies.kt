@@ -5,7 +5,7 @@ object Versions {
     const val koin = "3.1.4"
 
     const val kotlinCoroutines = "1.6.0"
-    const val ktor = "2.0.0-eap-283"
+    const val ktor = "2.0.0-beta-1"
     const val kotlinxSerialization = "1.3.1"
     const val slf4j = "1.7.30"
 
@@ -63,12 +63,8 @@ object Google {
 }
 
 object Ktor {
-    const val serverCore = "io.ktor:ktor-server-core:${Versions.ktor}"
-    const val serverNetty = "io.ktor:ktor-server-netty:${Versions.ktor}"
     const val serialization = "io.ktor:ktor-serialization:${Versions.ktor}"
     const val clientJson = "io.ktor:ktor-client-json:${Versions.ktor}"
-    const val slf4j = "org.slf4j:slf4j-simple:${Versions.slf4j}"
-    const val ktorGraphql = "com.apurebase:kgraphql-ktor:0.17.14"
 }
 
 object Kotlinx {
