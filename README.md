@@ -9,4 +9,4 @@ it's [Kotlin Multiplatform support](https://www.apollographql.com/docs/android/e
 
 ### Test GraphQL backend 
 
-The repo includes a small test GraphQL backend implemented using [KGraphQL Ktor plugin](https://kgraphql.io/Plugins/ktor/)
+The repo includes a small test GraphQL backend implemented using [GraphQL Kotlin](https://github.com/ExpediaGroup/graphql-kotlin). Run locally using `./gradlew bootRun`
