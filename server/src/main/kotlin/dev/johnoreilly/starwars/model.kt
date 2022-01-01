@@ -1,3 +1,5 @@
+package dev.johnoreilly.starwars
+
 enum class Episode {
     NEWHOPE, EMPIRE, JEDI
 }

@@ -19,8 +19,8 @@ jobs:
       run: ./gradlew :shared:compileKotlinIosArm64
     - name: Tests
       run:  ./gradlew allTests
-    - name: Build backend
-      run: ./gradlew :backend:assemble
+    - name: Build server
+      run: ./gradlew :server:assemble
 
 
   androidTest:
