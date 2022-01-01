@@ -139,7 +139,7 @@ const val PersonListTag = "PersonList"
 
 @Composable
 fun PeopleList(people: List<PersonFragment>) {
-    LazyColumn( modifier = Modifier.testTag(PersonListTag)) {
+    LazyColumn(modifier = Modifier.testTag(PersonListTag)) {
         items(people) { person ->
             PersonView(person)
         }
@@ -157,9 +157,11 @@ fun PersonView(person: PersonFragment) {
 }
 
 
+const val FilmListTag = "FilmList"
+
 @Composable
 fun FilmList(filmList: List<FilmFragment>) {
-    LazyColumn {
+    LazyColumn(modifier = Modifier.testTag(FilmListTag)) {
         items(items = filmList, itemContent = { film ->
             FilmView(film)
         })
