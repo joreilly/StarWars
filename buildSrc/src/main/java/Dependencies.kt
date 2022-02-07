@@ -1,13 +1,11 @@
 
 object Versions {
     const val kotlinVersion = "1.6.10"
-    const val apollo = "3.0.0"
+    const val apollo = "3.1.0"
     const val koin = "3.1.4"
 
     const val kotlinCoroutines = "1.6.0"
     const val ktor = "2.0.0-beta-1"
-    const val kotlinxSerialization = "1.3.1"
-    const val slf4j = "1.7.30"
 
     const val compose = "1.1.0-rc01"
     const val composeCompiler = "1.1.0-rc02"
