@@ -16,13 +16,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(Kotlinx.coroutinesCore) {
-                    isForce = true
-                }
+                api(Kotlinx.coroutinesCore)
 
-                with(Koin) {
-                    api(core)
-                }
+                api(Koin.core)
 
                 with(Apollo) {
                     api(apolloRuntime)
