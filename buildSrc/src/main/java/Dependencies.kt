@@ -1,20 +1,20 @@
 
 object Versions {
-    const val kotlinVersion = "1.6.10"
+    const val kotlinVersion = "1.6.20"
     const val apollo = "3.2.2"
-    const val koin = "3.1.4"
+    const val koin = "3.1.6"
 
-    const val kotlinCoroutines = "1.6.0"
+    const val kotlinCoroutines = "1.6.1"
     const val ktor = "2.0.0-beta-1"
 
-    const val compose = "1.1.0"
-    const val composeCompiler = "1.1.0"
-    const val navCompose = "2.4.1"
+    const val compose = "1.2.0-alpha08"
+    const val composeCompiler = "1.2.0-alpha08"
+    const val navCompose = "2.4.2"
     const val accompanist = "0.23.0"
 
-    const val wearCompose = "1.0.0-alpha16"
+    const val wearCompose = "1.0.0-alpha21"
 
-    const val kmpNativeCoroutines = "0.11.1-new-mm"
+    const val kmpNativeCoroutines = "0.12.1-new-mm"
 
     const val junit = "4.13"
 }
