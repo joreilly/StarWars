@@ -1,7 +1,7 @@
 
 object Versions {
     const val kotlinVersion = "1.6.20"
-    const val apollo = "3.2.2"
+    const val apollo = "3.3.0"
     const val koin = "3.1.6"
 
     const val kotlinCoroutines = "1.6.1"
