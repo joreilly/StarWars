@@ -4,6 +4,10 @@ import shared
 import KMPNativeCoroutinesAsync
 
 
+extension PersonFragment: Identifiable { }
+extension FilmFragment: Identifiable { }
+
+
 @MainActor
 class StarWarsViewModel: ObservableObject {
     let repository = StarWarsRepository()

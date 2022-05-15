@@ -20,14 +20,12 @@ struct ContentView: View {
 }
 
 
-extension Person: Identifiable { }
-
 struct PeopleView: View {
     @StateObject private var viewModel = StarWarsViewModel()
     
     var body: some View {
         NavigationView {
-            List(viewModel.peopleList, id: \.id) { person in
+            List(viewModel.peopleList) { person in
                 PersonView(person: person)
             }
             .navigationTitle("Star Wars")
@@ -49,8 +47,6 @@ struct PersonView: View {
     }
 }
 
-
-extension FilmFragment: Identifiable { }
 
 struct FilmListView: View {
     @StateObject private var viewModel = StarWarsViewModel()
