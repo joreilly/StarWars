@@ -7,12 +7,12 @@ object Versions {
     const val kotlinCoroutines = "1.6.1"
     const val ktor = "2.0.0-beta-1"
 
-    const val compose = "1.2.0-beta01"
-    const val composeCompiler = "1.2.0-beta01"
+    const val compose = "1.2.0-rc01"
+    const val composeCompiler = "1.2.0-rc01"
     const val navCompose = "2.4.2"
-    const val accompanist = "0.23.0"
+    const val accompanist = "0.24.11-rc"
 
-    const val wearCompose = "1.0.0-beta01"
+    const val wearCompose = "1.0.0-rc01"
 
     const val kmpNativeCoroutines = "0.12.1-new-mm"
 
@@ -23,7 +23,7 @@ object Versions {
 object AndroidSdk {
     const val min = 24
     const val minWear = 28
-    const val compile = 31
+    const val compile = 32
     const val target = compile
 }
 
