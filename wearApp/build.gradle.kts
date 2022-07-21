@@ -41,8 +41,7 @@ android {
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
-        freeCompilerArgs = listOf("-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check",
-            "-Xuse-experimental=com.apollographql.apollo.api.ApolloExperimental",
+        freeCompilerArgs = listOf("-Xskip-prerelease-check",
             "-opt-in=androidx.wear.material.ExperimentalWearMaterialApi",
             "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi"
         )
