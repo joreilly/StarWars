@@ -10,7 +10,7 @@ object Versions {
     const val compose = "1.2.0"
     const val composeCompiler = "1.3.0-rc01"
     const val navCompose = "2.4.2"
-    const val accompanist = "0.24.13-rc"
+    const val accompanist = "0.25.0"
 
     const val wearCompose = "1.0.0"
 
