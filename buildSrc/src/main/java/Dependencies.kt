@@ -1,16 +1,15 @@
 
 object Versions {
     const val kotlinVersion = "1.7.10"
-    const val apollo = "3.4.0"
+    const val apollo = "3.5.0"
     const val koin = "3.2.0"
 
     const val kotlinCoroutines = "1.6.4"
-    const val ktor = "2.0.3"
 
-    const val compose = "1.2.0"
-    const val composeCompiler = "1.3.0-rc01"
-    const val navCompose = "2.4.2"
-    const val accompanist = "0.25.0"
+    const val compose = "1.2.1"
+    const val composeCompiler = "1.3.0"
+    const val navCompose = "2.5.1"
+    const val accompanist = "0.25.1"
 
     const val wearCompose = "1.0.0"
 
@@ -58,11 +57,6 @@ object Google {
         const val pager = "com.google.accompanist:accompanist-pager:${Versions.accompanist}"
         const val pagerIndicator = "com.google.accompanist:accompanist-pager-indicators:${Versions.accompanist}"
     }
-}
-
-object Ktor {
-    const val serialization = "io.ktor:ktor-serialization:${Versions.ktor}"
-    const val clientJson = "io.ktor:ktor-client-json:${Versions.ktor}"
 }
 
 object Kotlinx {
