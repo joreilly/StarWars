@@ -5,6 +5,21 @@ Makes use of [Apollo](https://github.com/apollographql/apollo-android) library a
 it's [Kotlin Multiplatform support](https://www.apollographql.com/docs/android/essentials/get-started-multiplatform/).
 
 
+## Other Kotlin Multiplatform/Jetpack Compose/SwiftUI samples
+
+
+* [PeopleInSpace](https://github.com/joreilly/PeopleInSpace)
+* [BikeShare](https://github.com/joreilly/BikeShare)
+* [MortyComposeKMM](https://github.com/joreilly/MortyComposeKMM)
+* [FantasyPremierLeague](https://github.com/joreilly/FantasyPremierLeague)
+* [GalwayBus](https://github.com/joreilly/GalwayBus)
+* [Confetti](https://github.com/joreilly/Confetti)
+* [Chip-8](https://github.com/joreilly/chip-8)
+
+
+
+## Screenshots
+
 ![StarWars Screenshot](/art/screenshot1.png?raw=true )
 
 
