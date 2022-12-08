@@ -11,7 +11,7 @@ object Versions {
     const val navCompose = "2.5.2"
     const val accompanist = "0.27.0"
 
-    const val wearCompose = "1.0.2"
+    const val wearCompose = "1.1.0"
 
     const val kmpNativeCoroutines = "0.13.1"
 
