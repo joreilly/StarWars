@@ -70,6 +70,10 @@ dependencies {
         implementation(compose)
     }
 
+    with (Horologist) {
+        implementation(composeLayout)
+    }
+
     implementation(Google.Accompanist.pager)
     implementation(Google.Accompanist.pagerIndicator)
 }
