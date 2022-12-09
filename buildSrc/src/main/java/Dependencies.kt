@@ -10,6 +10,7 @@ object Versions {
     const val composeCompiler = "1.3.2"
     const val navCompose = "2.5.2"
     const val accompanist = "0.27.0"
+    const val horologist = "0.2.5"
 
     const val wearCompose = "1.1.0"
 
@@ -78,8 +79,6 @@ object Test {
     const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
 }
 
-
-
-
-
-
+object Horologist {
+    const val composeLayout = "com.google.android.horologist:horologist-compose-layout:${Versions.horologist}"
+}
