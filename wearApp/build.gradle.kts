@@ -32,10 +32,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
@@ -43,7 +39,9 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
         freeCompilerArgs = listOf("-Xskip-prerelease-check",
             "-opt-in=androidx.wear.material.ExperimentalWearMaterialApi",
-            "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi"
+            "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi",
+            "-P",
+            "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true"
         )
     }
 }
