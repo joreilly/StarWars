@@ -1,7 +1,7 @@
 
 object Versions {
-    const val kotlinVersion = "1.7.20"
-    const val apollo = "3.7.0"
+    const val kotlinVersion = "1.8.0"
+    const val apollo = "3.7.3"
     const val koinCore = "3.3.0"
     const val koinAndroid = "3.3.1"
     const val koinAndroidCompose = "3.4.0"
@@ -9,14 +9,14 @@ object Versions {
     const val kotlinCoroutines = "1.6.4"
 
     const val compose = "1.4.0-alpha03"
-    const val composeCompiler = "1.3.2"
+    const val composeCompiler = "1.4.0-dev-k1.8.0-RC-4c1865595ed"
     const val navCompose = "2.5.2"
     const val accompanist = "0.27.0"
     const val horologist = "0.2.5"
 
-    const val wearCompose = "1.1.0"
+    const val wearCompose = "1.2.0-alpha01"
 
-    const val kmpNativeCoroutines = "0.13.1"
+    const val kmpNativeCoroutines = "0.13.3"
 
     const val junit = "4.13"
 }

@@ -42,12 +42,6 @@ kotlin {
             dependencies {
             }
         }
-        val androidTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-                implementation("junit:junit:4.13.2")
-            }
-        }
 
         val appleMain by creating {
             dependsOn(commonMain)
