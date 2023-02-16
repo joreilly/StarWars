@@ -9,14 +9,14 @@ object Versions {
     const val kotlinCoroutines = "1.6.4"
 
     const val compose = "1.4.0-alpha03"
-    const val composeCompiler = "1.4.0-dev-k1.8.0-RC-4c1865595ed"
+    const val composeCompiler = "1.4.0"
     const val navCompose = "2.5.2"
     const val accompanist = "0.27.0"
     const val horologist = "0.2.5"
 
     const val wearCompose = "1.2.0-alpha01"
 
-    const val kmpNativeCoroutines = "0.13.3"
+    const val kmpNativeCoroutines = "1.0.0-ALPHA-4"
 
     const val junit = "4.13"
 }

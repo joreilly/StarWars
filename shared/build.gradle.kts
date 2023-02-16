@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("com.apollographql.apollo3")
+    id("com.google.devtools.ksp")
     id("com.rickclephas.kmp.nativecoroutines")
 }
 
@@ -84,4 +85,8 @@ apollo {
     codegenModels.set("operationBased")
     generateSchema.set(true)
     generateTestBuilders.set(true)
+}
+
+kotlin.sourceSets.all {
+    languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
 }

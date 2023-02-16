@@ -1,23 +1,37 @@
 import SwiftUI
 import shared
+import KMPNativeCoroutinesAsync
 
 
 struct ContentView: View {
-    @StateObject private var viewModel = StarWarsViewModel()
+    @State var repo = StarWarsRepository()
+    @State var filmList: [FilmFragment] = []
     
     var body: some View {
-        TabView {
-            PeopleView()
-                .tabItem {
-                    Label("People", systemImage: "person")
-                }
-            FilmListView()
-                .tabItem {
-                    Label("Films", systemImage: "film")
-                }
+        List(filmList) { film in
+            VStack(alignment: .leading) {
+                Text(film.title).font(.headline)
+                Text(film.director).font(.subheadline)
+            }
+        }
+        .task {
+            await observeFilms()
+        }
+    }
+    
+    func observeFilms() async {
+        do {
+            let stream = asyncSequence(for: repo.films)
+            for try await data in stream {
+                self.filmList = data
+            }
+        } catch {
+            print("Failed with error: \(error)")
         }
     }
 }
+
+
 
 
 struct PeopleView: View {

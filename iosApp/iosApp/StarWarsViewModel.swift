@@ -17,7 +17,7 @@ class StarWarsViewModel: ObservableObject {
     
     func startObservingPeople() async {
         do {
-            let stream = asyncStream(for: repository.peopleNative)
+            let stream = asyncSequence(for: repository.people)
             for try await data in stream {
                 self.peopleList = data
             }
@@ -28,7 +28,7 @@ class StarWarsViewModel: ObservableObject {
     
     func startObservingFilms() async {
         do {
-            let stream = asyncStream(for: repository.filmsNative)
+            let stream = asyncSequence(for: repository.films)
             for try await data in stream {
                 self.filmList = data
             }

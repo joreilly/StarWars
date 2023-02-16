@@ -1,5 +1,8 @@
+@file:OptIn(ExperimentalMaterialApi::class)
+
 package dev.johnoreilly.starwars.androidApp
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -44,12 +47,19 @@ import dev.johnoreilly.starwars.shared.StarWarsRepository
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setDecorFitsSystemWindows(window, false)
 
         setContent {
             StarWarsTheme {
-                ProvideWindowInsets {
-                    MainLayout()
+                val repo = remember { StarWarsRepository() }
+                val filmList by repo.films.collectAsState(emptyList())
+
+                LazyColumn {
+                    items(filmList) { film ->
+                        ListItem(
+                            text = { Text(film.title) },
+                            secondaryText = { Text(film.director) }
+                        )
+                    }
                 }
             }
         }
@@ -68,6 +78,7 @@ val bottomNavigationItems = listOf(
     BottomNavigationitem(Screen.FilmList.title, R.drawable.ic_movie, Screen.FilmList.title)
 )
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MainLayout() {
     val navController = rememberNavController()
