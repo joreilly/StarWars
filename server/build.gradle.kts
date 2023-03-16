@@ -12,7 +12,7 @@ dependencies {
   implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.1")
   implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1")
 
-  testImplementation("com.squareup.okhttp3:okhttp:4.9.3")
+  testImplementation("com.squareup.okhttp3:okhttp:4.10.0")
 }
 
 kotlin {
