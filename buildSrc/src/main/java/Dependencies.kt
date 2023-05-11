@@ -8,7 +8,7 @@ object Versions {
     const val koinAndroidCompose = "3.4.3"
 
     const val compose = "1.4.0"
-    const val composeCompiler = "1.4.5"
+    const val composeCompiler = "1.4.7"
     const val navCompose = "2.5.2"
     const val accompanist = "0.27.0"
     const val horologist = "0.2.5"
