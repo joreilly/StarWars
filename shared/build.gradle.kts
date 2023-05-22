@@ -77,6 +77,12 @@ android {
         targetSdk = AndroidSdk.target
     }
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    namespace = "dev.johnoreilly.starwars.shared"
 }
 
 apollo {
