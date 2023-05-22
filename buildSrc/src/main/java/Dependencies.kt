@@ -17,7 +17,7 @@ object Versions {
 
     const val kmpNativeCoroutines = "0.13.3"
 
-    const val junit = "4.13"
+    const val junit = "4.13.2"
 }
 
 
