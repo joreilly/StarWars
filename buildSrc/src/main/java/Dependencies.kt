@@ -13,7 +13,7 @@ object Versions {
     const val accompanist = "0.30.1"
     const val horologist = "0.2.5"
 
-    const val wearCompose = "1.2.0-alpha01"
+    const val wearCompose = "1.2.0-beta01"
 
     const val kmpNativeCoroutines = "0.13.3"
 
