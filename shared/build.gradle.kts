@@ -16,24 +16,21 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(Kotlinx.coroutinesCore)
+                implementation(libs.coroutines.core)
+                implementation(libs.koin.core)
 
-                api(Koin.core)
-
-                with(Apollo) {
-                    api(apolloRuntime)
-                    implementation(apolloNormalizedCacheInMemory)
-                    implementation(apolloNormalizedCacheSqlite)
-                }
+                api(libs.apollo.runtime)
+                implementation(libs.apollo.normalized.cache)
+                implementation(libs.apollo.normalized.cache.sqlite)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(Koin.test)
-                implementation(Kotlinx.coroutinesTest)
-                implementation(Apollo.apolloMockServer)
-                implementation(Apollo.apolloTestingSupport)
+                implementation(libs.koin.test)
+                implementation(libs.coroutines.test)
+                implementation(libs.apollo.mockserver)
+                implementation(libs.apollo.testing.support)
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
             }
@@ -70,11 +67,10 @@ kotlin {
 }
 
 android {
-    compileSdk = AndroidSdk.compile
+    compileSdk = libs.versions.compileSdk.get().toInt()
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdk = AndroidSdk.min
-        targetSdk = AndroidSdk.target
+        minSdk = libs.versions.minSdk.get().toInt()
     }
 
     compileOptions {

@@ -1,0 +1,74 @@
+[versions]
+kotlin = "1.9.0-Beta"
+coroutines = "1.7.1"
+androidGradlePlugin = "8.0.2"
+koin = "3.4.0"
+koinCompose = "3.4.4"
+apollo = "3.8.2"
+kmpNativeCoroutines = "0.13.3"
+
+androidxActivity = "1.7.2"
+androidxComposeCompiler = "1.4.7-dev-k1.9.0-Beta-bb7dc8b44eb"
+androidxComposeBom = "2023.05.01"
+androidxNavigationCompose = "2.5.3"
+accompanist = "0.30.1"
+horologist = "0.2.5"
+wearCompose = "1.2.0-beta01"
+
+junit = "4.13.2"
+
+minSdk = "24"
+minWearSdk = "28"
+targetSdk = "33"
+compileSdk = "33"
+
+
+
+[libraries]
+coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout" }
+androidx-compose-material = { group = "androidx.compose.material", name = "material" }
+androidx-compose-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
+androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test" }
+androidx-compose-ui-test-junit = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidxNavigationCompose" }
+accompanist-insets = { group = "com.google.accompanist", name = "accompanist-insets", version.ref = "accompanist" }
+accompanist-pager = { group = "com.google.accompanist", name = "accompanist-pager", version.ref = "accompanist" }
+accompanist-pagerIndicator = { group = "com.google.accompanist", name = "accompanist-pager-indicators", version.ref = "accompanist" }
+
+
+androidx-wear-compose-foundation = { module = "androidx.wear.compose:compose-foundation", version.ref = "wearCompose" }
+androidx-wear-compose-material = { module = "androidx.wear.compose:compose-material", version.ref = "wearCompose" }
+androidx-wear-compose-navigation = { module = "androidx.wear.compose:compose-navigation", version.ref = "wearCompose" }
+horologist-compose-layout = { module = "com.google.android.horologist:horologist-compose-layout", version.ref = "horologist" }
+
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinCompose" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
+
+apollo-runtime = { group = "com.apollographql.apollo3", name = "apollo-runtime", version.ref = "apollo" }
+apollo-normalized-cache = { group = "com.apollographql.apollo3", name = "apollo-normalized-cache", version.ref = "apollo" }
+apollo-normalized-cache-sqlite = { group = "com.apollographql.apollo3", name = "apollo-normalized-cache-sqlite", version.ref = "apollo" }
+apollo-mockserver = { group = "com.apollographql.apollo3", name = "apollo-mockserver", version.ref = "apollo" }
+apollo-testing-support = { group = "com.apollographql.apollo3", name = "apollo-testing-support", version.ref = "apollo" }
+
+junit = { module = "junit:junit", version.ref = "junit" }
+
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+apollo = { id = "com.apollographql.apollo3", version.ref = "apollo" }
+kmpNativeCoroutines = { id = "com.rickclephas.kmp.nativecoroutines", version.ref = "kmpNativeCoroutines" }

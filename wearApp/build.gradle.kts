@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk = AndroidSdk.compile
+    compileSdk = libs.versions.compileSdk.get().toInt()
     defaultConfig {
         applicationId = "dev.johnoreilly.starwars.androidApp"
-        minSdk = AndroidSdk.minWear
-        targetSdk = AndroidSdk.target
+        minSdk = libs.versions.minWearSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
 
         versionCode = 1
         versionName = "1.0"
@@ -25,7 +25,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.composeCompiler
+        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
     }
 
     buildTypes {
@@ -52,28 +52,22 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 dependencies {
     implementation(project(":shared"))
 
-    with (Compose) {
-        implementation(compiler)
-        implementation(ui)
-        implementation(uiGraphics)
-        implementation(uiTooling)
-        implementation(foundationLayout)
-        implementation(activityCompose)
-        implementation(wearFoundation)
-        implementation(wearMaterial)
-        implementation(wearNavigation)
-    }
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.foundation.layout)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.tooling)
 
-    with (Koin) {
-        implementation(core)
-        implementation(android)
-        implementation(compose)
-    }
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.wear.compose.foundation)
+    implementation(libs.androidx.wear.compose.material)
+    implementation(libs.androidx.wear.compose.navigation)
 
-    with (Horologist) {
-        implementation(composeLayout)
-    }
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
 
-    implementation(Google.Accompanist.pager)
-    implementation(Google.Accompanist.pagerIndicator)
+    implementation(libs.horologist.compose.layout)
+    implementation(libs.accompanist.pager)
+    implementation(libs.accompanist.pagerIndicator)
 }
