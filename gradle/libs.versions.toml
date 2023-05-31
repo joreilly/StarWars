@@ -3,7 +3,7 @@ kotlin = "1.9.0-Beta"
 coroutines = "1.7.1"
 androidGradlePlugin = "8.0.2"
 koin = "3.4.0"
-koinCompose = "3.4.4"
+koinCompose = "3.4.5"
 apollo = "3.8.2"
 kmpNativeCoroutines = "0.13.3"
 
