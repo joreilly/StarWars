@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk = AndroidSdk.compile
+    compileSdk = libs.versions.compileSdk.get().toInt()
     defaultConfig {
         applicationId = "dev.johnoreilly.starwars.androidApp"
-        minSdk = AndroidSdk.min
-        targetSdk = AndroidSdk.target
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
 
         versionCode = 1
         versionName = "1.0"
@@ -26,7 +26,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = Versions.composeCompiler
+        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
     }
 
     buildTypes {
@@ -41,28 +41,27 @@ android {
 dependencies {
     implementation(project(":shared"))
 
-    with (Compose) {
-        implementation(compiler)
-        implementation(ui)
-        implementation(uiGraphics)
-        implementation(uiTooling)
-        implementation(foundationLayout)
-        implementation(material)
-        implementation(navigation)
-    }
 
-    with (Koin) {
-        implementation(core)
-        implementation(android)
-        implementation(compose)
-    }
+    implementation(libs.androidx.activity.compose)
 
-    with(Test) {
-        testImplementation(junit)
-        androidTestImplementation(composeUiTest)
-        androidTestImplementation(composeUiTestJUnit)
-        debugImplementation(composeUiTestManifest)
-    }
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.foundation.layout)
+    implementation(libs.androidx.compose.material)
+    implementation(libs.androidx.compose.runtime)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.tooling)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.accompanist.insets)
 
-    implementation(Google.Accompanist.insets)
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+
+    testImplementation(libs.junit)
+
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.compose.ui.test)
+    androidTestImplementation(libs.androidx.compose.ui.test.junit)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
