@@ -2,11 +2,12 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("com.apollographql.apollo3")
+    id("com.google.devtools.ksp")
     id("com.rickclephas.kmp.nativecoroutines")
 }
 
 kotlin {
-    android()
+    androidTarget()
     jvm()
 
     val iosArm64 = iosArm64()
@@ -86,4 +87,8 @@ apollo {
     codegenModels.set("operationBased")
     generateSchema.set(true)
     generateTestBuilders.set(true)
+}
+
+kotlin.sourceSets.all {
+    languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
 }
