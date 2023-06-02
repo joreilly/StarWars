@@ -1,18 +1,19 @@
 [versions]
 kotlin = "1.9.0-Beta"
+ksp = "1.9.0-Beta-1.0.11"
 coroutines = "1.7.1"
 androidGradlePlugin = "8.0.2"
-koin = "3.4.0"
-koinCompose = "3.4.4"
+koin = "3.4.1"
+koinCompose = "3.4.5"
 apollo = "3.8.2"
-kmpNativeCoroutines = "0.13.3"
+kmpNativeCoroutines = "1.0.0-ALPHA-10"
 
 androidxActivity = "1.7.2"
 androidxComposeCompiler = "1.4.7-dev-k1.9.0-Beta-bb7dc8b44eb"
 androidxComposeBom = "2023.05.01"
 androidxNavigationCompose = "2.5.3"
 accompanist = "0.30.1"
-horologist = "0.2.5"
+horologist = "0.4.8"
 wearCompose = "1.2.0-beta01"
 
 junit = "4.13.2"
@@ -69,6 +70,7 @@ junit = { module = "junit:junit", version.ref = "junit" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 apollo = { id = "com.apollographql.apollo3", version.ref = "apollo" }
 kmpNativeCoroutines = { id = "com.rickclephas.kmp.nativecoroutines", version.ref = "kmpNativeCoroutines" }

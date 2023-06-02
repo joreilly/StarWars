@@ -1,8 +1,12 @@
 pluginManagement {
-    repositories {
-        google()
-        gradlePluginPortal()
-        mavenCentral()
+    listOf(repositories, dependencyResolutionManagement.repositories).forEach {
+        it.apply {
+            google()
+            gradlePluginPortal()
+            mavenCentral()
+            maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+            maven("https://androidx.dev/storage/compose-compiler/repository")
+        }
     }
     resolutionStrategy {
         eachPlugin {

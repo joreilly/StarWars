@@ -1,10 +1,14 @@
-@file:OptIn(ExperimentalHorologistComposeLayoutApi::class)
+@file:OptIn(ExperimentalHorologistComposeLayoutApi::class, ExperimentalFoundationApi::class,
+    ExperimentalHorologistApi::class
+)
 
 package dev.johnoreilly.starwars.wearApp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -21,6 +25,7 @@ import androidx.wear.compose.material.scrollAway
 import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
 import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
+import com.google.android.horologist.annotations.ExperimentalHorologistApi
 import com.google.android.horologist.compose.layout.ScalingLazyColumnDefaults
 import com.google.android.horologist.compose.layout.ScalingLazyColumnState
 import com.google.android.horologist.compose.navscaffold.ExperimentalHorologistComposeLayoutApi
@@ -58,13 +63,15 @@ fun MainLayout(navController: NavHostController) {
     val people by repo.people.collectAsState(emptyList())
     val films by repo.films.collectAsState(emptyList())
 
+    val pagerState = rememberPagerState { 2 }
+
     Scaffold(vignette = { Vignette(vignettePosition = VignettePosition.TopAndBottom) }) {
         SwipeDismissableNavHost(
             navController = navController,
             startDestination = Screen.Lists.title
         ) {
             composable(Screen.Lists.title) {
-                PagerScreen(count = 2) { page ->
+                PagerScreen(state = pagerState) { page ->
                     when (page) {
                         0 -> {
                             val peopleColumnState =

@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalHorologistApi::class)
+
 package dev.johnoreilly.starwars.wearApp.people
 
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -7,6 +9,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.wear.compose.material.Card
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
+import com.google.android.horologist.annotations.ExperimentalHorologistApi
 import com.google.android.horologist.compose.layout.ScalingLazyColumn
 import com.google.android.horologist.compose.layout.ScalingLazyColumnState
 import dev.johnoreilly.starwars.fragment.PersonFragment
@@ -31,8 +34,7 @@ fun PersonView(person: PersonFragment) {
         Text(person.name, style = MaterialTheme.typography.title3)
         Text(
             person.homeworld.name,
-            style = MaterialTheme.typography.body1,
-            color = Color.DarkGray
+            style = MaterialTheme.typography.body1
         )
     }
 }
