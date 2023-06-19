@@ -8,7 +8,7 @@ plugins {
 
 
 dependencies {
-  implementation("com.expediagroup:graphql-kotlin-spring-server:6.4.0")
+  implementation("com.expediagroup:graphql-kotlin-spring-server:6.5.3")
   implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
   implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
 
