@@ -7,12 +7,26 @@ plugins {
 }
 
 kotlin {
+    targetHierarchy.default()
+
     androidTarget()
     jvm()
 
-    val iosArm64 = iosArm64()
-    val iosX64 = iosX64()
-    val iosSimulatorArm64 = iosSimulatorArm64()
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "shared"
+
+            // re. https://youtrack.jetbrains.com/issue/KT-60230/Native-unknown-options-iossimulatorversionmin-sdkversion-with-Xcode-15-beta-3
+            // due to be fixed in Kotlin 1.9.10
+            if (System.getenv("XCODE_VERSION_MAJOR") == "1500") {
+                linkerOpts += "-ld64"
+            }
+        }
+    }
 
     sourceSets {
         val commonMain by getting {
@@ -36,34 +50,6 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting {
-            dependencies {
-            }
-        }
-
-        val appleMain by creating {
-            dependsOn(commonMain)
-        }
-        val appleTest by creating {
-            dependsOn(commonTest)
-        }
-
-        val jvmMain by getting
-
-        listOf(
-            iosArm64, iosX64, iosSimulatorArm64
-        ).forEach {
-            it.binaries.framework {
-                baseName = "shared"
-            }
-            getByName("${it.targetName}Main") {
-                dependsOn(appleMain)
-            }
-            getByName("${it.targetName}Test") {
-                dependsOn(appleTest)
-            }
-        }
-
     }
 }
 
