@@ -1,7 +1,3 @@
-@file:OptIn(ExperimentalHorologistComposeLayoutApi::class, ExperimentalFoundationApi::class,
-    ExperimentalHorologistApi::class
-)
-
 package dev.johnoreilly.starwars.wearApp
 
 import android.os.Bundle
@@ -28,8 +24,6 @@ import androidx.wear.compose.navigation.rememberSwipeDismissableNavController
 import com.google.android.horologist.annotations.ExperimentalHorologistApi
 import com.google.android.horologist.compose.layout.ScalingLazyColumnDefaults
 import com.google.android.horologist.compose.layout.ScalingLazyColumnState
-import com.google.android.horologist.compose.navscaffold.ExperimentalHorologistComposeLayoutApi
-import com.google.android.horologist.compose.navscaffold.NavScaffoldViewModel.VignetteMode
 import com.google.android.horologist.compose.pager.PagerScreen
 import dev.johnoreilly.starwars.shared.StarWarsRepository
 import dev.johnoreilly.starwars.wearApp.film.FilmList
@@ -53,9 +47,10 @@ class MainActivity : ComponentActivity() {
 }
 
 sealed class Screen(val title: String) {
-    object Lists : Screen("Lists")
+    data object Lists : Screen("Lists")
 }
 
+@OptIn(ExperimentalFoundationApi::class, ExperimentalHorologistApi::class)
 @Composable
 fun MainLayout(navController: NavHostController) {
     val repo = rememberStarWarsRepository()
@@ -98,8 +93,9 @@ fun MainLayout(navController: NavHostController) {
 
 }
 
+@OptIn(ExperimentalHorologistApi::class)
 @Composable
-public fun PageScaffold(
+fun PageScaffold(
     columnState: ScalingLazyColumnState,
     content: @Composable () -> Unit
 ) {
