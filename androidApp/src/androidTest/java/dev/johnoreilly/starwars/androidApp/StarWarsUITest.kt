@@ -12,7 +12,7 @@ class StarWarsUITest {
     val composeTestRule = createComposeRule()
 
     private val people = listOf(PersonFragment("1", "Name 1", PersonFragment.Homeworld("Home world 1")))
-    private val films = listOf(FilmFragment("1", "Title 1", "Directory 1"), FilmFragment("2", "Title 2", "Directory 2"))
+    private val films = listOf(FilmFragment("1", "Title 1", "Director 1"), FilmFragment("2", "Title 2", "Director 2"))
 
     @Test
     fun testPeopleListScreen() {
@@ -26,8 +26,9 @@ class StarWarsUITest {
 
         people.forEachIndexed { index, person ->
             val rowNode = personListNode.onChildAt(index)
-            rowNode.assertTextContains(person.name)
-            rowNode.assertTextContains(person.homeworld.name)
+            rowNode.printToLog("TAG")
+            rowNode.onChild().assertTextContains(person.name)
+            rowNode.onChild().assertTextContains(person.homeworld.name)
         }
     }
 
@@ -43,8 +44,8 @@ class StarWarsUITest {
 
         films.forEachIndexed { index, film ->
             val rowNode = filmListNode.onChildAt(index)
-            rowNode.assertTextContains(film.title)
-            rowNode.assertTextContains(film.director)
+            rowNode.onChild().assertTextContains(film.title)
+            rowNode.onChild().assertTextContains(film.director)
         }
     }
 }
