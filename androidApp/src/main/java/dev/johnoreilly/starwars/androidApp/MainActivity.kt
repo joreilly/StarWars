@@ -3,6 +3,8 @@ package dev.johnoreilly.starwars.androidApp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.BottomNavigation
@@ -57,8 +59,8 @@ class MainActivity : ComponentActivity() {
 }
 
 sealed class Screen(val title: String) {
-    object PersonList : Screen("Person List")
-    object FilmList : Screen("Film List")
+    data object PersonList : Screen("Person List")
+    data object FilmList : Screen("Film List")
 }
 
 data class BottomNavigationitem(val route: String, val icon: Int, val iconContentDescription: String)
@@ -80,13 +82,14 @@ fun MainLayout() {
         topBar = { StarWarsTopAppBar("Star Wars") },
         bottomBar = { StarWarsBottomNavigation(navController) }
     ) {
-
-        NavHost(navController, startDestination = Screen.PersonList.title) {
-            composable(Screen.PersonList.title) {
-                PeopleList(people)
-            }
-            composable(Screen.FilmList.title) {
-                FilmList(filmList)
+        Column(Modifier.padding(it)) {
+            NavHost(navController, startDestination = Screen.PersonList.title) {
+                composable(Screen.PersonList.title) {
+                    PeopleList(people)
+                }
+                composable(Screen.FilmList.title) {
+                    FilmList(filmList)
+                }
             }
         }
     }

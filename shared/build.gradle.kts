@@ -7,8 +7,6 @@ plugins {
 }
 
 kotlin {
-    targetHierarchy.default()
-
     androidTarget()
     jvm()
 
@@ -23,7 +21,7 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting {
+        commonMain {
             dependencies {
                 implementation(libs.coroutines.core)
                 implementation(libs.koin.core)
@@ -34,7 +32,7 @@ kotlin {
             }
         }
 
-        val commonTest by getting {
+        commonTest {
             dependencies {
                 implementation(libs.koin.test)
                 implementation(libs.coroutines.test)
@@ -63,10 +61,12 @@ android {
 }
 
 apollo {
-    packageName.set("dev.johnoreilly.starwars")
-    codegenModels.set("operationBased")
-    generateSchema.set(true)
-    generateTestBuilders.set(true)
+    service("service") {
+        packageName.set("dev.johnoreilly.starwars")
+        codegenModels.set("operationBased")
+        generateSchema.set(true)
+        generateTestBuilders.set(true)
+    }
 }
 
 kotlin.sourceSets.all {
