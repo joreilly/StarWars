@@ -25,10 +25,9 @@ class StarWarsUITest {
             .onChildren().assertCountEquals(people.size)
 
         people.forEachIndexed { index, person ->
-            val rowNode = personListNode.onChildAt(index)
-            rowNode.printToLog("TAG")
-            rowNode.onChild().assertTextContains(person.name)
-            rowNode.onChild().assertTextContains(person.homeworld.name)
+            val rowNode = personListNode.onChildAt(index).onChild().onChild()
+            rowNode.assertTextContains(person.name)
+            rowNode.assertTextContains(person.homeworld.name)
         }
     }
 
@@ -43,9 +42,9 @@ class StarWarsUITest {
             .onChildren().assertCountEquals(films.size)
 
         films.forEachIndexed { index, film ->
-            val rowNode = filmListNode.onChildAt(index)
-            rowNode.onChild().assertTextContains(film.title)
-            rowNode.onChild().assertTextContains(film.director)
+            val rowNode = filmListNode.onChildAt(index).onChild().onChild()
+            rowNode.assertTextContains(film.title)
+            rowNode.assertTextContains(film.director)
         }
     }
 }

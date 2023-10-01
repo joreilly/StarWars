@@ -6,10 +6,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -29,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -145,10 +149,17 @@ fun PeopleList(people: List<PersonFragment>) {
 
 @Composable
 fun PersonView(person: PersonFragment) {
-    ListItem(
-        headlineContent = { Text(person.name, style = MaterialTheme.typography.titleLarge) },
-        supportingContent = { Text(person.homeworld.name, style = MaterialTheme.typography.titleMedium, color = Color.DarkGray) }
-    )
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+    ) {
+        ListItem(
+            headlineContent = { Text(person.name, style = MaterialTheme.typography.titleLarge) },
+            supportingContent = { Text(person.homeworld.name, style = MaterialTheme.typography.titleMedium, color = Color.DarkGray) }
+        )
+    }
 }
 
 
@@ -166,8 +177,15 @@ fun FilmList(filmList: List<FilmFragment>) {
 
 @Composable
 fun FilmView(film: FilmFragment) {
-    ListItem(
-        headlineContent = { Text(film.title, style = MaterialTheme.typography.titleLarge) },
-        supportingContent = { Text(film.director, style = MaterialTheme.typography.titleMedium, color = Color.DarkGray) }
-    )
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+    ) {
+        ListItem(
+            headlineContent = { Text(film.title, style = MaterialTheme.typography.titleLarge) },
+            supportingContent = { Text(film.director, style = MaterialTheme.typography.titleMedium, color = Color.DarkGray) }
+        )
+    }
 }
