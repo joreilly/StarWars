@@ -15,7 +15,7 @@ kotlin {
   sourceSets {
     val jvmMain by getting {
       dependencies {
-        implementation("com.expediagroup:graphql-kotlin-spring-server:7.0.1")
+        implementation("com.expediagroup:graphql-kotlin-spring-server:7.0.2")
         implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.1")
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 
