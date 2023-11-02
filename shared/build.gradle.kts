@@ -21,26 +21,22 @@ kotlin {
     }
 
     sourceSets {
-        commonMain {
-            dependencies {
-                implementation(libs.coroutines.core)
-                implementation(libs.koin.core)
+        commonMain.dependencies {
+            implementation(libs.coroutines.core)
+            implementation(libs.koin.core)
 
-                api(libs.apollo.runtime)
-                implementation(libs.apollo.normalized.cache)
-                implementation(libs.apollo.normalized.cache.sqlite)
-            }
+            api(libs.apollo.runtime)
+            implementation(libs.apollo.normalized.cache)
+            implementation(libs.apollo.normalized.cache.sqlite)
         }
 
-        commonTest {
-            dependencies {
-                implementation(libs.koin.test)
-                implementation(libs.coroutines.test)
-                implementation(libs.apollo.mockserver)
-                implementation(libs.apollo.testing.support)
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
-            }
+        commonTest.dependencies {
+            implementation(libs.koin.test)
+            implementation(libs.coroutines.test)
+            implementation(libs.apollo.mockserver)
+            implementation(libs.apollo.testing.support)
+            implementation(kotlin("test-common"))
+            implementation(kotlin("test-annotations-common"))
         }
     }
 }
