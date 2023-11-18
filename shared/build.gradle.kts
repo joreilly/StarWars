@@ -61,7 +61,7 @@ apollo {
         packageName.set("dev.johnoreilly.starwars")
         codegenModels.set("operationBased")
         generateSchema.set(true)
-        generateTestBuilders.set(true)
+        generateDataBuilders.set(true)
     }
 }
 
