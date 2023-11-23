@@ -1,7 +1,7 @@
 plugins {
   kotlin("multiplatform")
   id("org.jetbrains.kotlin.plugin.spring").version("1.9.20")
-  id("org.jetbrains.kotlin.plugin.serialization").version("1.9.20")
+  id("org.jetbrains.kotlin.plugin.serialization").version("1.9.21")
   id("org.springframework.boot").version("3.1.4")
   //id("com.google.cloud.tools.appengine").version("2.4.2")
 }
