@@ -20,6 +20,7 @@ rootProject.name = "StarWarsKMM"
 
 include(":androidApp", ":shared")
 include(":wearApp")
+include(":compose-web")
 include(":server")
 
 check(JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {
