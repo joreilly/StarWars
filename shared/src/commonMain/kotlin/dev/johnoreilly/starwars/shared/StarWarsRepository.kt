@@ -9,6 +9,7 @@ import dev.johnoreilly.starwars.GetAllFilmsQuery
 import dev.johnoreilly.starwars.GetAllPeopleQuery
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 import okio.IOException
 import org.koin.core.component.KoinComponent
@@ -21,13 +22,15 @@ class StarWarsRepository: KoinComponent {
     private val apolloClient: ApolloClient by inject()
 
     @NativeCoroutines
-    val people = apolloClient.query(GetAllPeopleQuery()).watch().map {
-        it.dataAssertNoErrors.allPeople.people.mapNotNull { it?.personFragment }
+    val people = apolloClient.query(GetAllPeopleQuery()).watch()
+        .filter { it.exception == null }
+        .map { it.dataOrThrow().allPeople.people.mapNotNull { it?.personFragment }
     }
 
     @NativeCoroutines
-    val films = apolloClient.query(GetAllFilmsQuery()).watch().map {
-        it.dataAssertNoErrors.allFilms.films.mapNotNull { it?.filmFragment }
+    val films = apolloClient.query(GetAllFilmsQuery()).watch()
+        .filter { it.exception == null }
+        .map { it.dataOrThrow().allFilms.films.mapNotNull { it?.filmFragment }
     }
 
     suspend fun prefetch() {
