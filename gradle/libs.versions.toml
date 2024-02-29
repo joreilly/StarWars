@@ -13,7 +13,7 @@ androidxComposeCompiler = "1.5.5-dev-k2.0.0-Beta1-06b8ae672a4"
 androidxComposeBom = "2023.10.01"
 androidxNavigationCompose = "2.7.5"
 accompanist = "0.30.1"
-horologist = "0.5.13"
+horologist = "0.6.3"
 wearCompose = "1.2.1"
 
 junit = "4.13.2"
