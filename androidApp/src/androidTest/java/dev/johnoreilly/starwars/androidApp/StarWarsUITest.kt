@@ -25,7 +25,7 @@ class StarWarsUITest {
             .onChildren().assertCountEquals(people.size)
 
         people.forEachIndexed { index, person ->
-            val rowNode = personListNode.onChildAt(index).onChild().onChild()
+            val rowNode = personListNode.onChildAt(index).onChild()
             rowNode.assertTextContains(person.name)
             rowNode.assertTextContains(person.homeworld.name)
         }
@@ -42,7 +42,7 @@ class StarWarsUITest {
             .onChildren().assertCountEquals(films.size)
 
         films.forEachIndexed { index, film ->
-            val rowNode = filmListNode.onChildAt(index).onChild().onChild()
+            val rowNode = filmListNode.onChildAt(index).onChild()
             rowNode.assertTextContains(film.title)
             rowNode.assertTextContains(film.director)
         }
