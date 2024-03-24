@@ -6,7 +6,7 @@ androidGradlePlugin = "8.2.2"
 koin = "3.5.3"
 koinCompose = "3.5.3"
 apollo = "4.0.0-beta.4"
-kmpNativeCoroutines = "1.0.0-ALPHA-24"
+kmpNativeCoroutines = "1.0.0-ALPHA-27"
 
 androidxActivity = "1.8.2"
 androidxComposeCompiler = "1.5.8"
