@@ -47,6 +47,13 @@ kotlin {
             implementation(libs.apollo.normalized.cache.sqlite)
         }
 
+        val androidUnitTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+                implementation(kotlin("test-junit"))
+            }
+        }
+
         appleMain.dependencies {
             implementation(libs.apollo.normalized.cache.sqlite)
         }
@@ -87,4 +94,8 @@ apollo {
 
 kotlin.sourceSets.all {
     languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions.jvmTarget = "17"
 }
