@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -24,9 +25,9 @@ android {
         buildConfig = true
     }
 
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-    }
+//    composeOptions {
+//        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
+//    }
 
     buildTypes {
         getByName("release") {
@@ -41,9 +42,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xskip-prerelease-check",
             "-opt-in=androidx.wear.material.ExperimentalWearMaterialApi",
-            "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi",
-            "-P",
-            "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true"
+            "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi"
         )
     }
 }
