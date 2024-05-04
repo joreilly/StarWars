@@ -31,6 +31,7 @@ kotlin {
                 api(compose.components.resources)
 
                 implementation(libs.androidx.navigation.compose)
+                implementation(libs.compose.window.size)
                 implementation(project(":shared"))
             }
         }

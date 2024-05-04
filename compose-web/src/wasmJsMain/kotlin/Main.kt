@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Movie
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Card
@@ -24,6 +23,9 @@ import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -61,27 +63,37 @@ fun main() {
 }
 
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 fun App() {
     val navController = rememberNavController()
     val repo = rememberStarWarsRepository()
 
+    val windowSizeClass = calculateWindowSizeClass()
+    val shouldShowNavRail = windowSizeClass.widthSizeClass == WindowWidthSizeClass.Expanded
+
     val people by repo.people.collectAsState(emptyList())
     val filmList by repo.films.collectAsState(emptyList())
 
-    Scaffold(
-        topBar = { StarWarsTopAppBar("Star Wars") },
-        //bottomBar = { StarWarsBottomNavigation(navController) }
-    ) {
-        Row(Modifier.padding(it)) {
-            StarWarsNavigationRail(navController)
 
-            NavHost(navController, startDestination = Screen.PersonList.title) {
-                composable(Screen.PersonList.title) {
-                    PeopleList(people)
-                }
-                composable(Screen.FilmList.title) {
-                    FilmList(filmList)
+    Row {
+        if (shouldShowNavRail) {
+            StarWarsNavigationRail(navController)
+        }
+
+        val bottomBar: @Composable () -> Unit = { if (!shouldShowNavRail) { StarWarsBottomNavigation(navController) }  }
+        Scaffold(
+            topBar = { StarWarsTopAppBar("Star Wars") },
+            bottomBar = bottomBar
+        ) {
+            Column(Modifier.padding(it)) {
+                NavHost(navController, startDestination = Screen.PersonList.title) {
+                    composable(Screen.PersonList.title) {
+                        PeopleList(people)
+                    }
+                    composable(Screen.FilmList.title) {
+                        FilmList(filmList)
+                    }
                 }
             }
         }
