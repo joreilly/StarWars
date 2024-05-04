@@ -20,14 +20,18 @@ kotlin {
         }
     }
 
+    wasmJs {
+        browser()
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(libs.coroutines.core)
-            implementation(libs.koin.core)
+            api(libs.koin.core)
+            api(libs.koin.compose)
 
             api(libs.apollo.runtime)
             implementation(libs.apollo.normalized.cache)
-            implementation(libs.apollo.normalized.cache.sqlite)
         }
 
         commonTest.dependencies {
@@ -37,6 +41,18 @@ kotlin {
             implementation(libs.apollo.testing.support)
             implementation(kotlin("test-common"))
             implementation(kotlin("test-annotations-common"))
+        }
+
+        androidMain.dependencies {
+            implementation(libs.apollo.normalized.cache.sqlite)
+        }
+
+        appleMain.dependencies {
+            implementation(libs.apollo.normalized.cache.sqlite)
+        }
+
+        jvmMain.dependencies {
+            implementation(libs.apollo.normalized.cache.sqlite)
         }
     }
 }
