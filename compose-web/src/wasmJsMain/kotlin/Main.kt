@@ -1,5 +1,6 @@
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
@@ -175,7 +176,7 @@ const val PersonListTag = "PersonList"
 
 @Composable
 fun PeopleList(people: List<PersonFragment>) {
-    LazyColumn(modifier = Modifier.testTag(PersonListTag)) {
+    LazyColumn(modifier = Modifier.fillMaxSize().testTag(PersonListTag)) {
         items(people) { person ->
             PersonView(person)
         }
@@ -215,7 +216,7 @@ const val FilmListTag = "FilmList"
 
 @Composable
 fun FilmList(filmList: List<FilmFragment>) {
-    LazyColumn(modifier = Modifier.testTag(FilmListTag)) {
+    LazyColumn(modifier = Modifier.fillMaxSize().testTag(FilmListTag)) {
         items(items = filmList, itemContent = { film ->
             FilmView(film)
         })
