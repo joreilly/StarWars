@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.0.0-RC2"
 ksp = "2.0.0-RC2-1.0.20"
-coroutines = "1.8.0"
+coroutines = "1.8.1"
 androidGradlePlugin = "8.4.0"
 koin = "3.6.0-alpha3"
 koinCompose = "1.2.0-alpha3"
