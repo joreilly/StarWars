@@ -1,17 +1,18 @@
 [versions]
-kotlin = "2.0.0-RC2"
-ksp = "2.0.0-RC2-1.0.20"
-coroutines = "1.8.0"
+kotlin = "2.0.0-RC3"
+ksp = "2.0.0-RC3-1.0.20"
+coroutines = "1.8.1"
 androidGradlePlugin = "8.4.0"
-koin = "3.6.0-alpha3"
-koinCompose = "1.2.0-alpha3"
+koin = "3.6.0-Beta4"
+koinCompose = "3.6.0-Beta4"
+koinComposeMultiplatform = "1.2.0-Beta4"
 apollo = "4.0.0-beta.6"
-kmpNativeCoroutines = "1.0.0-ALPHA-28-kotlin-2.0.0-RC2"
+kmpNativeCoroutines = "1.0.0-ALPHA-30-kotlin-2.0.0-RC3"
 
 androidxActivity = "1.9.0"
 androidxComposeBom = "2024.05.00"
 androidx-navigation = "2.8.0-alpha02"
-androidx-lifecycle = "2.8.0-rc01"
+androidx-lifecycle = "2.8.0"
 accompanist = "0.30.1"
 horologist = "0.6.10"
 wearCompose = "1.3.1"
@@ -59,7 +60,7 @@ horologist-compose-layout = { module = "com.google.android.horologist:horologist
 compose-window-size = { module = "dev.chrisbanes.material3:material3-window-size-class-multiplatform", version.ref = "composeWindowSize" }
 
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
-koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinCompose" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinComposeMultiplatform" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 
