@@ -28,7 +28,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(libs.coroutines.core)
+            implementation(libs.kotlinx.coroutines)
             api(libs.koin.core)
             api(libs.koin.compose)
 
@@ -38,7 +38,7 @@ kotlin {
 
         commonTest.dependencies {
             implementation(libs.koin.test)
-            implementation(libs.coroutines.test)
+            implementation(libs.kotlinx.coroutines.test)
             implementation(libs.apollo.mockserver)
             implementation(libs.apollo.testing.support)
             implementation(kotlin("test-common"))
