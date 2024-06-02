@@ -16,16 +16,20 @@ jobs:
         java-version: 17
     - name: Build with Gradle
       run: ./gradlew assembleDebug
+
+
     - name: Build iOS shared code
       run: ./gradlew :shared:compileKotlinIosArm64
-    #- name: Tests
-    #  run:  ./gradlew allTests
+
+    - name: Tests
+      run:  ./gradlew :shared:jvmTest
+
     - name: Build server
       run: ./gradlew :server:assemble
 
 
   androidTest:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,9 +40,9 @@ jobs:
           distribution: 'zulu'
           java-version: 17
 
-#      - name: Android Instrumentation Tests
-#        uses: reactivecircus/android-emulator-runner@v2
-#        with:
-#          api-level: 29
-#          arch: x86_64
-#          script: ./gradlew androidApp:connectedAndroidTest
+      - name: Android Instrumentation Tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          arch: x86_64
+          script: ./gradlew androidApp:connectedAndroidTest
