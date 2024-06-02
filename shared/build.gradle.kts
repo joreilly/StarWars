@@ -41,8 +41,7 @@ kotlin {
             implementation(libs.kotlinx.coroutines.test)
             implementation(libs.apollo.mockserver)
             implementation(libs.apollo.testing.support)
-            implementation(kotlin("test-common"))
-            implementation(kotlin("test-annotations-common"))
+            implementation(kotlin("test"))
         }
 
         androidMain.dependencies {
