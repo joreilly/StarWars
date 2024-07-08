@@ -1,8 +1,8 @@
 package dev.johnoreilly.starwars.shared
 
-import com.apollographql.apollo3.ApolloClient
-import com.apollographql.apollo3.api.Query
-import com.apollographql.apollo3.cache.normalized.watch
+import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.api.Query
+import com.apollographql.apollo.cache.normalized.watch
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutineScope
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import dev.johnoreilly.starwars.GetAllFilmsQuery

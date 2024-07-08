@@ -1,12 +1,12 @@
 package dev.johnoreilly.starwars.shared
 
-import com.apollographql.apollo3.ApolloClient
-import com.apollographql.apollo3.annotations.ApolloExperimental
-import com.apollographql.apollo3.api.toResponseJson
-import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
-import com.apollographql.apollo3.cache.normalized.normalizedCache
-import com.apollographql.apollo3.mockserver.MockResponse
-import com.apollographql.apollo3.mockserver.MockServer
+import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.annotations.ApolloExperimental
+import com.apollographql.apollo.api.toResponseJson
+import com.apollographql.apollo.cache.normalized.api.MemoryCacheFactory
+import com.apollographql.apollo.cache.normalized.normalizedCache
+import com.apollographql.apollo.mockserver.MockResponse
+import com.apollographql.apollo.mockserver.MockServer
 import dev.johnoreilly.starwars.shared.di.commonModule
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest

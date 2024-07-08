@@ -1,9 +1,8 @@
 package dev.johnoreilly.starwars.shared.di
 
-import com.apollographql.apollo3.ApolloClient
-import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
-import com.apollographql.apollo3.cache.normalized.api.NormalizedCacheFactory
-import com.apollographql.apollo3.cache.normalized.normalizedCache
+import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.cache.normalized.api.NormalizedCacheFactory
+import com.apollographql.apollo.cache.normalized.normalizedCache
 import dev.johnoreilly.starwars.shared.StarWarsRepository
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
