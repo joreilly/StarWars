@@ -1,8 +1,8 @@
 package dev.johnoreilly.starwars.shared.di
 
-import com.apollographql.apollo3.cache.normalized.api.MemoryCacheFactory
-import com.apollographql.apollo3.cache.normalized.api.NormalizedCacheFactory
-import com.apollographql.apollo3.cache.normalized.sql.SqlNormalizedCacheFactory
+import com.apollographql.apollo.cache.normalized.api.MemoryCacheFactory
+import com.apollographql.apollo.cache.normalized.api.NormalizedCacheFactory
+import com.apollographql.apollo.cache.normalized.sql.SqlNormalizedCacheFactory
 import org.koin.dsl.module
 
 actual fun platformModule() = module {

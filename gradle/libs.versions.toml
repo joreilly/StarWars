@@ -1,23 +1,23 @@
 [versions]
 kotlin = "2.0.0"
-ksp = "2.0.0-1.0.21"
+ksp = "2.0.0-1.0.22"
 kotlinx-coroutines = "1.8.1"
 
 androidGradlePlugin = "8.4.1"
 koin = "3.6.0-Beta4"
 koinCompose = "3.6.0-Beta4"
 koinComposeMultiplatform = "1.2.0-Beta4"
-apollo = "4.0.0-beta.6"
+apollo = "4.0.0-rc.1"
 kmpNativeCoroutines = "1.0.0-ALPHA-31"
 
 androidxActivity = "1.9.0"
-androidxComposeBom = "2024.05.00"
+androidxComposeBom = "2024.06.00"
 androidx-navigation = "2.8.0-alpha02"
 androidx-lifecycle = "2.8.0"
 accompanist = "0.30.1"
 horologist = "0.6.12"
 wearCompose = "1.3.1"
-composeMultiplatform = "1.6.10"
+composeMultiplatform = "1.6.11"
 composeWindowSize = "0.5.0"
 
 junit = "4.13.2"
@@ -65,11 +65,11 @@ koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinComp
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 
-apollo-runtime = { group = "com.apollographql.apollo3", name = "apollo-runtime", version.ref = "apollo" }
-apollo-normalized-cache = { group = "com.apollographql.apollo3", name = "apollo-normalized-cache", version.ref = "apollo" }
-apollo-normalized-cache-sqlite = { group = "com.apollographql.apollo3", name = "apollo-normalized-cache-sqlite", version.ref = "apollo" }
-apollo-mockserver = { group = "com.apollographql.apollo3", name = "apollo-mockserver", version.ref = "apollo" }
-apollo-testing-support = { group = "com.apollographql.apollo3", name = "apollo-testing-support", version.ref = "apollo" }
+apollo-runtime = { group = "com.apollographql.apollo", name = "apollo-runtime", version.ref = "apollo" }
+apollo-normalized-cache = { group = "com.apollographql.apollo", name = "apollo-normalized-cache", version.ref = "apollo" }
+apollo-normalized-cache-sqlite = { group = "com.apollographql.apollo", name = "apollo-normalized-cache-sqlite", version.ref = "apollo" }
+apollo-mockserver = { group = "com.apollographql.apollo", name = "apollo-mockserver", version.ref = "apollo" }
+apollo-testing-support = { group = "com.apollographql.apollo", name = "apollo-testing-support", version.ref = "apollo" }
 
 junit = { module = "junit:junit", version.ref = "junit" }
 
@@ -79,7 +79,7 @@ android-application = { id = "com.android.application", version.ref = "androidGr
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-apollo = { id = "com.apollographql.apollo3", version.ref = "apollo" }
+apollo = { id = "com.apollographql.apollo", version.ref = "apollo" }
 kmpNativeCoroutines = { id = "com.rickclephas.kmp.nativecoroutines", version.ref = "kmpNativeCoroutines" }
 dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.25.0" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
