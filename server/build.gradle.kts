@@ -16,7 +16,7 @@ kotlin {
     val jvmMain by getting {
       dependencies {
         implementation("com.expediagroup:graphql-kotlin-spring-server:7.1.1")
-        implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
+        implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 
         //testImplementation("com.squareup.okhttp3:okhttp:4.11.0")
