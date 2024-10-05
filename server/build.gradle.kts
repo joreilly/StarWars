@@ -1,9 +1,8 @@
 plugins {
   kotlin("multiplatform")
-  id("org.jetbrains.kotlin.plugin.spring").version("1.9.20")
-  id("org.jetbrains.kotlin.plugin.serialization").version("1.9.20")
-  id("org.springframework.boot").version("3.2.5")
-  //id("com.google.cloud.tools.appengine").version("2.4.2")
+  id("org.jetbrains.kotlin.plugin.spring").version("2.0.20")
+  id("org.jetbrains.kotlin.plugin.serialization").version("2.0.20")
+  id("org.springframework.boot").version("3.3.4")
 }
 
 
@@ -15,9 +14,9 @@ kotlin {
   sourceSets {
     val jvmMain by getting {
       dependencies {
-        implementation("com.expediagroup:graphql-kotlin-spring-server:7.1.1")
-        implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
-        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+        implementation("com.expediagroup:graphql-kotlin-spring-server:7.1.4")
+        implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
 
         //testImplementation("com.squareup.okhttp3:okhttp:4.11.0")
       }

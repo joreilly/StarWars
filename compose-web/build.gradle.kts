@@ -40,7 +40,7 @@ kotlin {
 
                 implementation(libs.androidx.navigation.compose)
                 implementation(libs.compose.window.size)
-                implementation(project(":shared"))
+                implementation(projects.shared)
             }
         }
     }
