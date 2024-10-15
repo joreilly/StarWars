@@ -7,7 +7,7 @@ androidGradlePlugin = "8.7.0"
 koin = "4.0.0"
 koinComposeMultiplatform = "4.0.0"
 apollo = "4.0.0"
-kmpNativeCoroutines = "1.0.0-ALPHA-35"
+kmpNativeCoroutines = "1.0.0-ALPHA-37"
 
 androidxActivity = "1.9.2"
 androidxComposeBom = "2024.09.03"
