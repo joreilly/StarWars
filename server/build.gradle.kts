@@ -2,7 +2,7 @@ plugins {
   kotlin("multiplatform")
   id("org.jetbrains.kotlin.plugin.spring").version("2.0.20")
   id("org.jetbrains.kotlin.plugin.serialization").version("2.0.20")
-  id("org.springframework.boot").version("3.3.4")
+  id("org.springframework.boot").version("3.4.1")
 }
 
 
