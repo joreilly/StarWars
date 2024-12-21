@@ -1,22 +1,23 @@
 [versions]
-kotlin = "2.0.21"
-ksp = "2.0.21-1.0.25"
+kotlin = "2.1.0"
+ksp = "2.1.0-1.0.29"
 kotlinx-coroutines = "1.9.0"
 
-androidGradlePlugin = "8.7.1"
+androidGradlePlugin = "8.7.3"
 koin = "4.0.0"
 koinComposeMultiplatform = "4.0.0"
-apollo = "4.0.1"
-kmpNativeCoroutines = "1.0.0-ALPHA-37"
+apollo = "4.1.0"
+apolloMockServer = "0.1.0"
+kmpNativeCoroutines = "1.0.0-ALPHA-38"
 
 androidxActivity = "1.9.3"
-androidxComposeBom = "2024.10.00"
+androidxComposeBom = "2024.12.01"
 androidx-navigation = "2.8.0-alpha08"
-androidx-lifecycle = "2.8.3"
+androidx-lifecycle = "2.8.4"
 accompanist = "0.30.1"
 horologist = "0.6.20"
 wearCompose = "1.4.0"
-composeMultiplatform = "1.7.0"
+composeMultiplatform = "1.7.3"
 composeWindowSize = "0.5.0"
 
 junit = "4.13.2"
@@ -67,7 +68,7 @@ koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 apollo-runtime = { group = "com.apollographql.apollo", name = "apollo-runtime", version.ref = "apollo" }
 apollo-normalized-cache = { group = "com.apollographql.apollo", name = "apollo-normalized-cache", version.ref = "apollo" }
 apollo-normalized-cache-sqlite = { group = "com.apollographql.apollo", name = "apollo-normalized-cache-sqlite", version.ref = "apollo" }
-apollo-mockserver = { group = "com.apollographql.apollo", name = "apollo-mockserver", version.ref = "apollo" }
+apollo-mockserver = { group = "com.apollographql.mockserver", name = "apollo-mockserver", version.ref = "apolloMockServer" }
 apollo-testing-support = { group = "com.apollographql.apollo", name = "apollo-testing-support", version.ref = "apollo" }
 
 junit = { module = "junit:junit", version.ref = "junit" }
