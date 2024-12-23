@@ -1,6 +1,6 @@
 # StarWars
 
-![kotlin-version](https://img.shields.io/badge/kotlin-2.0.0-blue?logo=kotlin)
+![kotlin-version](https://img.shields.io/badge/kotlin-2.1.0-blue?logo=kotlin)
 
 Minimal GraphQL based Jetpack Compose, Wear Compose and SwiftUI Kotlin Multiplatform sample (using StarWars endpoint - https://graphql.org/swapi-graphql).
 Makes use of [Apollo](https://github.com/apollographql/apollo-android) library and in particular
