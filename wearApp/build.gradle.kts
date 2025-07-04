@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -25,10 +27,6 @@ android {
         buildConfig = true
     }
 
-//    composeOptions {
-//        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-//    }
-
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
@@ -39,10 +37,13 @@ android {
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-Xskip-prerelease-check",
-            "-opt-in=androidx.wear.material.ExperimentalWearMaterialApi",
-            "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi"
+    compilerOptions {
+        freeCompilerArgs.set(
+            listOf(
+                "-Xskip-prerelease-check",
+                "-opt-in=androidx.wear.material.ExperimentalWearMaterialApi",
+                "-opt-in=com.google.accompanist.pager.ExperimentalPagerApi"
+            )
         )
     }
 }
@@ -67,6 +68,8 @@ dependencies {
     implementation(libs.koin.compose)
 
     implementation(libs.horologist.compose.layout)
-    implementation(libs.accompanist.pager)
-    implementation(libs.accompanist.pagerIndicator)
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    compilerOptions.jvmTarget.set(JvmTarget.JVM_17)
 }

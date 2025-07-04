@@ -9,9 +9,7 @@ people
 
 extend type Person @nonnull(fields: """
 name
-homeworld
 """)
-
 
 extend type Planet @nonnull(fields: """
 name

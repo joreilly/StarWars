@@ -46,7 +46,7 @@ fun testStarWarsRepository() = runTest {
         val people = repo.people.first()
         assertEquals(2, people.size)
         assertEquals("Person 1", people[0].name)
-        assertEquals("Home World 1", people[0].homeworld.name)
+        assertEquals("Home World 1", people[0].homeworld?.name)
         println(people)
 
         mockServer.enqueue(MockResponse.Builder().body(getAllFilmsMockResponse.toResponseJson()).build())

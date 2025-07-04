@@ -32,7 +32,7 @@ fun PersonView(person: PersonFragment) {
     Card(modifier = Modifier.fillMaxWidth(), onClick = { }) {
         Text(person.name, style = MaterialTheme.typography.title3)
         Text(
-            person.homeworld.name,
+            person.homeworld?.name ?: "",
             style = MaterialTheme.typography.body1
         )
     }

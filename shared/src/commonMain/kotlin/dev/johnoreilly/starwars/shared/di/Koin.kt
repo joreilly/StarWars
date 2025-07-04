@@ -27,7 +27,7 @@ fun commonModule() = module {
 
 fun createApolloClient(normalizedCacheFactory: NormalizedCacheFactory): ApolloClient {
     return ApolloClient.Builder()
-        .serverUrl("https://swapi-graphql.netlify.app/.netlify/functions/index")
+        .serverUrl("https://swapi-graphql.netlify.app/graphql")
         .normalizedCache(normalizedCacheFactory, writeToCacheAsynchronously = true)
         .build()
 }

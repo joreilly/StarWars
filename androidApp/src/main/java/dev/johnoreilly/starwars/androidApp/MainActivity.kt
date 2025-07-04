@@ -167,7 +167,7 @@ fun PersonView(person: PersonFragment) {
                 },
                 supportingContent = {
                     Text(
-                        person.homeworld.name,
+                        person.homeworld?.name ?: "",
                         style = MaterialTheme.typography.titleMedium,
                         color = Color.DarkGray
                     )
