@@ -12,7 +12,6 @@ version = "1.0-SNAPSHOT"
 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
 kotlin {
     wasmJs {
-        moduleName = "StarWars"
         browser {
             commonWebpackConfig {
                 outputFileName = "StarWars.js"

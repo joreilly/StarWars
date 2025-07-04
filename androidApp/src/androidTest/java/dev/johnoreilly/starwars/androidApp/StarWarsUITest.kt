@@ -27,7 +27,7 @@ class StarWarsUITest {
         people.forEachIndexed { index, person ->
             val rowNode = personListNode.onChildAt(index).onChild()
             rowNode.assertTextContains(person.name)
-            rowNode.assertTextContains(person.homeworld.name)
+            rowNode.assertTextContains(person.homeworld?.name ?: "")
         }
     }
 

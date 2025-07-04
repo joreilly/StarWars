@@ -42,7 +42,7 @@ struct PersonView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(person.name).font(.headline)
-            Text(person.homeworld.name).font(.subheadline)
+            Text(person.homeworld?.name ?? "").font(.subheadline)
         }
     }
 }

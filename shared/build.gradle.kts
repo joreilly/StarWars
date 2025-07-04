@@ -80,7 +80,7 @@ apollo {
         generateSchema.set(true)
         generateDataBuilders.set(true)
         introspection {
-            endpointUrl.set("https://swapi-graphql.netlify.app/.netlify/functions/index")
+            endpointUrl.set("https://swapi-graphql.netlify.app/graphql")
             schemaFile.set(file("src/commonMain/graphql/schema.graphqls"))
         }
     }
