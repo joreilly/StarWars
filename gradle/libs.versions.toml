@@ -6,7 +6,7 @@ kotlinx-coroutines = "1.10.2"
 androidGradlePlugin = "8.11.1"
 koin = "4.1.0"
 koinComposeMultiplatform = "4.1.0"
-apollo = "4.3.1"
+apollo = "4.3.2"
 apolloMockServer = "0.1.1"
 kmpNativeCoroutines = "1.0.0-ALPHA-45"
 
