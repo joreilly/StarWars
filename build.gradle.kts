@@ -14,7 +14,7 @@ plugins {
 buildscript {
     configurations.all {
         resolutionStrategy {
-            force("org.apache.commons:commons-compress:1.25.0")
+            force("org.apache.commons:commons-compress:1.28.0")
         }
     }
 }
