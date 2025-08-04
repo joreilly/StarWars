@@ -7,6 +7,14 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform) apply false
     alias(libs.plugins.apollo) apply false
     alias(libs.plugins.kmpNativeCoroutines) apply false
-    alias(libs.plugins.dependency.analysis)
 }
 
+
+// to fix bootJar issue
+buildscript {
+    configurations.all {
+        resolutionStrategy {
+            force("org.apache.commons:commons-compress:1.25.0")
+        }
+    }
+}
