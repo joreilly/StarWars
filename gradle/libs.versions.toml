@@ -3,10 +3,10 @@ kotlin = "2.2.0"
 ksp = "2.2.0-2.0.2"
 kotlinx-coroutines = "1.10.2"
 
-androidGradlePlugin = "8.11.1"
+androidGradlePlugin = "8.12.0"
 koin = "4.1.0"
 koinComposeMultiplatform = "4.1.0"
-apollo = "4.3.1"
+apollo = "4.3.2"
 apolloMockServer = "0.1.1"
 kmpNativeCoroutines = "1.0.0-ALPHA-45"
 
@@ -76,6 +76,6 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 apollo = { id = "com.apollographql.apollo", version.ref = "apollo" }
 kmpNativeCoroutines = { id = "com.rickclephas.kmp.nativecoroutines", version.ref = "kmpNativeCoroutines" }
-dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "1.33.0" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinJvm = { id = "org.jetbrains.kotlin.jvm" }
