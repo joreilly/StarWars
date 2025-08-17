@@ -8,7 +8,7 @@ koin = "4.1.0"
 koinComposeMultiplatform = "4.1.0"
 apollo = "4.3.2"
 apolloMockServer = "0.1.1"
-kmpNativeCoroutines = "1.0.0-ALPHA-45"
+kmpNativeCoroutines = "1.0.0-ALPHA-46"
 
 androidxActivity = "1.10.1"
 androidxComposeBom = "2025.07.00"
