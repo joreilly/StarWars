@@ -13,8 +13,8 @@ class StarWarsViewModel: ObservableObject {
     let repository = StarWarsRepository()
     @Published public var peopleList: [PersonFragment] = []
     @Published public var filmList: [FilmFragment] = []
-    
-    
+
+
     func startObservingPeople() async {
         do {
             let stream = asyncSequence(for: repository.people)
