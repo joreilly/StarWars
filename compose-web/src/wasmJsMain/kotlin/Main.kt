@@ -40,7 +40,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.CanvasBasedWindow
+import androidx.compose.ui.window.ComposeViewport
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -50,13 +50,14 @@ import dev.johnoreilly.starwars.fragment.FilmFragment
 import dev.johnoreilly.starwars.fragment.PersonFragment
 import dev.johnoreilly.starwars.shared.StarWarsRepository
 import dev.johnoreilly.starwars.shared.di.initKoin
+import kotlinx.browser.document
 
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
     initKoin()
 
-    CanvasBasedWindow("StarWars", canvasElementId = "StarWarsCanvas") {
+    ComposeViewport(document.body!!) {
         MaterialTheme {
             App()
         }

@@ -8,13 +8,3 @@ plugins {
     alias(libs.plugins.apollo) apply false
     alias(libs.plugins.kmpNativeCoroutines) apply false
 }
-
-
-// to fix bootJar issue
-buildscript {
-    configurations.all {
-        resolutionStrategy {
-            force("org.apache.commons:commons-compress:1.25.0")
-        }
-    }
-}

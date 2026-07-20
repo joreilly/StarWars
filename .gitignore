@@ -14,6 +14,7 @@ gradle-app.setting
 .idea
 *.iml
 .gradle
+.kotlin
 /local.properties
 /.idea/caches
 /.idea/libraries
@@ -22,9 +23,12 @@ gradle-app.setting
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
 .DS_Store
+*.db
 /build
 /androidApp/build
 /shared/build
+/compose-web/build
+/server/build
 /captures
 
 
