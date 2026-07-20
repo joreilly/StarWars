@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -12,6 +11,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.wear.compose.foundation.pager.rememberPagerState
 import androidx.wear.compose.material.PositionIndicator
 import androidx.wear.compose.material.Scaffold
 import androidx.wear.compose.material.TimeText
@@ -70,7 +70,7 @@ fun MainLayout(navController: NavHostController) {
                     when (page) {
                         0 -> {
                             val peopleColumnState =
-                                ScalingLazyColumnDefaults.belowTimeText(firstItemIsFullWidth = true)
+                                ScalingLazyColumnDefaults.responsive(firstItemIsFullWidth = true)
                                     .create()
                             PageScaffold(columnState = peopleColumnState) {
                                 PeopleList(people = people, columnState = peopleColumnState)
@@ -79,7 +79,7 @@ fun MainLayout(navController: NavHostController) {
 
                         1 -> {
                             val filmColumnState =
-                                ScalingLazyColumnDefaults.belowTimeText(firstItemIsFullWidth = true)
+                                ScalingLazyColumnDefaults.responsive(firstItemIsFullWidth = true)
                                     .create()
                             PageScaffold(columnState = filmColumnState) {
                                 FilmList(films = films, columnState = filmColumnState)
