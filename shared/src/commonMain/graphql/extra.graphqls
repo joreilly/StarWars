@@ -1,26 +1,22 @@
-extend type Root @nonnull(fields: """
-allPeople
-allFilms
-""")
+extend schema @link(
+  url: "https://specs.apollo.dev/nullability/v0.4",
+  import: ["@semanticNonNull", "@semanticNonNullField", "@catch", "CatchTo", "@catchByDefault"]
+)
 
-extend type PeopleConnection @nonnull(fields: """
-people
-""")
+extend schema @catchByDefault(to: THROW)
 
-extend type Person @nonnull(fields: """
-name
-""")
+extend type Root
+  @semanticNonNullField(name: "allPeople")
+  @semanticNonNullField(name: "allFilms")
 
-extend type Planet @nonnull(fields: """
-name
-""")
+extend type PeopleConnection @semanticNonNullField(name: "people")
 
+extend type Person @semanticNonNullField(name: "name")
 
-extend type FilmsConnection @nonnull(fields: """
-films
-""")
+extend type Planet @semanticNonNullField(name: "name")
 
-extend type Film @nonnull(fields: """
-title
-director
-""")
+extend type FilmsConnection @semanticNonNullField(name: "films")
+
+extend type Film
+  @semanticNonNullField(name: "title")
+  @semanticNonNullField(name: "director")
