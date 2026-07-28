@@ -2,11 +2,12 @@ package dev.johnoreilly.starwars.shared
 
 import dev.johnoreilly.starwars.GetAllFilmsQuery
 import dev.johnoreilly.starwars.GetAllPeopleQuery
-import dev.johnoreilly.starwars.type.buildFilm
-import dev.johnoreilly.starwars.type.buildFilmsConnection
-import dev.johnoreilly.starwars.type.buildPeopleConnection
-import dev.johnoreilly.starwars.type.buildPerson
-import dev.johnoreilly.starwars.type.buildPlanet
+import dev.johnoreilly.starwars.builder.Data
+import dev.johnoreilly.starwars.builder.buildFilm
+import dev.johnoreilly.starwars.builder.buildFilmsConnection
+import dev.johnoreilly.starwars.builder.buildPeopleConnection
+import dev.johnoreilly.starwars.builder.buildPerson
+import dev.johnoreilly.starwars.builder.buildPlanet
 
 
 val getAllPeopleMockResponse = GetAllPeopleQuery.Data {
