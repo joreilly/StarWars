@@ -1,7 +1,7 @@
 plugins {
   alias(libs.plugins.kotlinJvm)
   id("org.jetbrains.kotlin.plugin.spring").version("2.4.20")
-  id("org.jetbrains.kotlin.plugin.serialization").version("2.4.20")
+  id("org.jetbrains.kotlin.plugin.serialization").version("2.4.21")
   id("org.springframework.boot").version("4.1.1")
 }
 
