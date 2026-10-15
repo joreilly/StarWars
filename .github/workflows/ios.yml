@@ -26,5 +26,7 @@ jobs:
           distribution: 'zulu'
           java-version: 17
       - uses: gradle/actions/setup-gradle@v6
-      - name: Build iOS shared code
-        run: ./gradlew :shared:compileKotlinIosArm64
+      # Compiling (not running) the tests for Kotlin/Native catches names and APIs that only
+      # break on Native; jvmTest already runs them. Running needs a macOS simulator.
+      - name: Build iOS shared code and tests
+        run: ./gradlew :shared:compileKotlinIosArm64 :shared:compileTestKotlinIosArm64
