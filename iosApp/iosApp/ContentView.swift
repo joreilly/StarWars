@@ -37,12 +37,12 @@ struct PeopleView: View {
 }
 
 struct PersonView: View {
-    var person: PersonFragment
+    var person: Person
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(person.name).font(.headline)
-            Text(person.homeworld?.name ?? "").font(.subheadline)
+            Text(person.homeworld ?? "").font(.subheadline)
         }
     }
 }
@@ -66,7 +66,7 @@ struct FilmListView: View {
 }
 
 struct FilmView: View {
-    var film: FilmFragment
+    var film: Film
     
     var body: some View {
         HStack {

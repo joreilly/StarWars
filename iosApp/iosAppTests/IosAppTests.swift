@@ -1,5 +1,4 @@
 import XCTest
-import KMPNativeCoroutinesAsync
 import shared
 
 @MainActor
@@ -7,9 +6,8 @@ class StarWarsIosAppTests: XCTestCase {
 
     func testGetFilmList() async throws {
         let repository = StarWarsRepository()
-        
-        let stream = asyncStream(for: repository.filmsNative)
-        for try await filmList in stream {
+
+        for try await filmList in repository.films.asAsyncSequence() {
             XCTAssertNotNil(filmList)
             print(filmList)
         }

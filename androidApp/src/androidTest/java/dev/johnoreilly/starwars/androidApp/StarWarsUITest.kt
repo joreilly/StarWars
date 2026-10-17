@@ -2,8 +2,8 @@ package dev.johnoreilly.starwars.androidApp
 
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
-import dev.johnoreilly.starwars.fragment.FilmFragment
-import dev.johnoreilly.starwars.fragment.PersonFragment
+import dev.johnoreilly.starwars.shared.Film
+import dev.johnoreilly.starwars.shared.Person
 import org.junit.Rule
 import org.junit.Test
 
@@ -11,8 +11,8 @@ class StarWarsUITest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
-    private val people = listOf(PersonFragment("1", "Name 1", PersonFragment.Homeworld("Home world 1")))
-    private val films = listOf(FilmFragment("1", "Title 1", "Director 1"), FilmFragment("2", "Title 2", "Director 2"))
+    private val people = listOf(Person("1", "Name 1", "Home world 1"))
+    private val films = listOf(Film("1", "Title 1", "Director 1"), Film("2", "Title 2", "Director 2"))
 
     @Test
     fun testPeopleListScreen() {
@@ -27,7 +27,7 @@ class StarWarsUITest {
         people.forEachIndexed { index, person ->
             val rowNode = personListNode.onChildAt(index).onChild()
             rowNode.assertTextContains(person.name)
-            rowNode.assertTextContains(person.homeworld?.name ?: "")
+            rowNode.assertTextContains(person.homeworld ?: "")
         }
     }
 

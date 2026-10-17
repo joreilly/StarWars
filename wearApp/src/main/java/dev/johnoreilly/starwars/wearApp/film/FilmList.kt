@@ -11,11 +11,11 @@ import androidx.wear.compose.material.Text
 import com.google.android.horologist.annotations.ExperimentalHorologistApi
 import com.google.android.horologist.compose.layout.ScalingLazyColumn
 import com.google.android.horologist.compose.layout.ScalingLazyColumnState
-import dev.johnoreilly.starwars.fragment.FilmFragment
+import dev.johnoreilly.starwars.shared.Film
 
 @Composable
 fun FilmList(
-    films: List<FilmFragment>,
+    films: List<Film>,
     columnState: ScalingLazyColumnState,
 ) {
     ScalingLazyColumn(
@@ -29,7 +29,7 @@ fun FilmList(
 }
 
 @Composable
-fun FilmView(film: FilmFragment) {
+fun FilmView(film: Film) {
     Card(modifier = Modifier.fillMaxWidth(), onClick = { }) {
         Text(film.title, style = MaterialTheme.typography.title3)
         Text(
