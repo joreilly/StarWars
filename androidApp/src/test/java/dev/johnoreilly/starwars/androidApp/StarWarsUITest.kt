@@ -6,7 +6,14 @@ import dev.johnoreilly.starwars.shared.Film
 import dev.johnoreilly.starwars.shared.Person
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 
+// Compose UI tests run on the JVM with Robolectric (no emulator); the Maestro flow covers the real
+// app end to end against the live API. A plain Application keeps the app's start-up out of it.
+@RunWith(RobolectricTestRunner::class)
+@Config(application = android.app.Application::class)
 class StarWarsUITest {
     @get:Rule
     val composeTestRule = createComposeRule()

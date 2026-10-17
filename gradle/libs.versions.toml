@@ -18,6 +18,8 @@ composeMultiplatform = "1.12.2"
 composeWindowSize = "0.5.0"
 
 junit = "4.13.2"
+robolectric = "4.17"
+androidxTestCore = "1.7.0"
 
 minSdk = "24"
 minWearSdk = "28"
@@ -65,6 +67,8 @@ apollo-mockserver = { group = "com.apollographql.mockserver", name = "apollo-moc
 apollo-testing-support = { group = "com.apollographql.apollo", name = "apollo-testing-support", version.ref = "apollo" }
 
 junit = { module = "junit:junit", version.ref = "junit" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+androidx-test-core = { module = "androidx.test:core", version.ref = "androidxTestCore" }
 
 
 [plugins]
