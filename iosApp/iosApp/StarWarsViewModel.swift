@@ -1,23 +1,22 @@
 import Foundation
 import SwiftUI
 import shared
-import KMPNativeCoroutinesAsync
 
 
-extension PersonFragment: Identifiable { }
-extension FilmFragment: Identifiable { }
+extension Person: Identifiable { }
+extension Film: Identifiable { }
 
 
 @MainActor
 class StarWarsViewModel: ObservableObject {
     let repository = StarWarsRepository()
-    @Published public var peopleList: [PersonFragment] = []
-    @Published public var filmList: [FilmFragment] = []
+    @Published public var peopleList: [Person] = []
+    @Published public var filmList: [Film] = []
 
 
     func startObservingPeople() async {
         do {
-            let stream = asyncSequence(for: repository.people)
+            let stream = repository.people.asAsyncSequence()
             for try await data in stream {
                 self.peopleList = data
             }
@@ -28,7 +27,7 @@ class StarWarsViewModel: ObservableObject {
     
     func startObservingFilms() async {
         do {
-            let stream = asyncSequence(for: repository.films)
+            let stream = repository.films.asAsyncSequence()
             for try await data in stream {
                 self.filmList = data
             }

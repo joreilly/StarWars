@@ -16,6 +16,11 @@ it's [Kotlin Multiplatform support](https://www.apollographql.com/docs/android/e
 
 The repo includes a small test GraphQL backend implemented using [GraphQL Kotlin](https://github.com/ExpediaGroup/graphql-kotlin). Run locally using `./gradlew bootRun`
 
+### UI tests
+
+There's a [Maestro](https://maestro.mobile.dev/) UI test flow shared by the Android and iOS clients, run by CI on
+an emulator and a simulator (e.g. `maestro test -e APP_ID=dev.johnoreilly.starwars.androidApp maestro/StarWars.flow`).
+
 ## Full set of Kotlin Multiplatform/Compose/SwiftUI samples
 
 *  PeopleInSpace (https://github.com/joreilly/PeopleInSpace)

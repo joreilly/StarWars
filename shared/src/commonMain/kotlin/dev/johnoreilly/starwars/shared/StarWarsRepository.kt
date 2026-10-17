@@ -3,8 +3,6 @@ package dev.johnoreilly.starwars.shared
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.Query
 import com.apollographql.apollo.cache.normalized.watch
-import com.rickclephas.kmp.nativecoroutines.NativeCoroutineScope
-import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import dev.johnoreilly.starwars.GetAllFilmsQuery
 import dev.johnoreilly.starwars.GetAllPeopleQuery
 import dev.johnoreilly.starwars.fragment.FilmFragment
@@ -16,28 +14,25 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
 import okio.IOException
-import org.koin.core.component.KoinComponent
+import org.koin.mp.KoinPlatform
 import org.koin.core.component.inject
 
-class StarWarsRepository: KoinComponent {
-    @NativeCoroutineScope
+class StarWarsRepository {
     val coroutineScope: CoroutineScope = MainScope()
 
-    private val apolloClient: ApolloClient by inject()
+    private val apolloClient: ApolloClient = KoinPlatform.getKoin().get()
 
-    @NativeCoroutines
-    val people: Flow<List<PersonFragment>> = apolloClient.query(GetAllPeopleQuery()).watch()
+    val people: Flow<List<Person>> = apolloClient.query(GetAllPeopleQuery()).watch()
         .filter {
             it.exception == null
         }
         .map {
-            it.dataOrThrow().allPeople.people.mapNotNull { it?.personFragment }
+            it.dataOrThrow().allPeople.people.mapNotNull { it?.personFragment?.let { p -> Person(p.id, p.name, p.homeworld?.name) } }
     }
 
-    @NativeCoroutines
-    val films: Flow<List<FilmFragment>> = apolloClient.query(GetAllFilmsQuery()).watch()
+    val films: Flow<List<Film>> = apolloClient.query(GetAllFilmsQuery()).watch()
         .filter { it.exception == null }
-        .map { it.dataOrThrow().allFilms.films.mapNotNull { it?.filmFragment }
+        .map { it.dataOrThrow().allFilms.films.mapNotNull { it?.filmFragment?.let { f -> Film(f.id, f.title, f.director) } }
     }
 
     suspend fun prefetch() {

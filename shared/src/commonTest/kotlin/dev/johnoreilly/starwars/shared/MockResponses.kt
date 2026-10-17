@@ -10,7 +10,7 @@ import dev.johnoreilly.starwars.builder.buildPerson
 import dev.johnoreilly.starwars.builder.buildPlanet
 
 
-val getAllPeopleMockResponse = GetAllPeopleQuery.Data {
+internal val getAllPeopleMockResponse = GetAllPeopleQuery.Data {
     allPeople = buildPeopleConnection {
         people = listOf(
             buildPerson {
@@ -31,7 +31,7 @@ val getAllPeopleMockResponse = GetAllPeopleQuery.Data {
     }
 }
 
-val getAllFilmsMockResponse = GetAllFilmsQuery.Data {
+internal val getAllFilmsMockResponse = GetAllFilmsQuery.Data {
     allFilms = buildFilmsConnection {
         films = listOf(
             buildFilm {

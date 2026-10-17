@@ -2,11 +2,15 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.apollo)
-    alias(libs.plugins.ksp)
-    alias(libs.plugins.kmpNativeCoroutines)
 }
 
 kotlin {
+    @OptIn(org.jetbrains.kotlin.gradle.swiftexport.ExperimentalSwiftExportDsl::class)
+    swiftExport {
+        moduleName = "shared"
+        flattenPackage = "dev.johnoreilly.starwars.shared"
+    }
+
     android {
         namespace = "dev.johnoreilly.starwars.shared"
         compileSdk = libs.versions.compileSdk.get().toInt()
@@ -37,7 +41,7 @@ kotlin {
             api(libs.koin.core)
             api(libs.koin.compose)
 
-            api(libs.apollo.runtime)
+            implementation(libs.apollo.runtime)
             implementation(libs.apollo.normalized.cache)
         }
 
@@ -67,6 +71,7 @@ apollo {
     service("service") {
         packageName.set("dev.johnoreilly.starwars")
         codegenModels.set("operationBased")
+        generateAsInternal.set(true)
         generateSchema.set(true)
         generateDataBuilders.set(true)
         introspection {

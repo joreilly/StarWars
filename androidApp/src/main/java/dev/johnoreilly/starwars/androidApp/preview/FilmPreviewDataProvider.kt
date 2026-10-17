@@ -1,12 +1,12 @@
 package dev.johnoreilly.starwars.androidApp.preview
 
 import androidx.compose.ui.tooling.preview.datasource.CollectionPreviewParameterProvider
-import dev.johnoreilly.starwars.fragment.FilmFragment
+import dev.johnoreilly.starwars.shared.Film
 
 
-class FilmPreviewDataProvider : CollectionPreviewParameterProvider<FilmFragment>(
+class FilmPreviewDataProvider : CollectionPreviewParameterProvider<Film>(
     listOf(
-        FilmFragment("1", "ISS", "Chris Cassidy"),
-        FilmFragment("2", "ISS", "Anatoli Ivanishin")
+        Film("1", "ISS", "Chris Cassidy"),
+        Film("2", "ISS", "Anatoli Ivanishin")
     )
 )
