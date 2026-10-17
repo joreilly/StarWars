@@ -13,7 +13,8 @@ import org.robolectric.annotation.Config
 // Compose UI tests run on the JVM with Robolectric (no emulator); the Maestro flow covers the real
 // app end to end against the live API. A plain Application keeps the app's start-up out of it.
 @RunWith(RobolectricTestRunner::class)
-@Config(application = android.app.Application::class)
+// SDK 35: Robolectric's SDK 36 runtime needs Java 21, and CI runs the tests on 17
+@Config(application = android.app.Application::class, sdk = [35])
 class StarWarsUITest {
     @get:Rule
     val composeTestRule = createComposeRule()
