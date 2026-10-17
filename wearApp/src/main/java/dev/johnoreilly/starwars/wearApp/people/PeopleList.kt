@@ -11,11 +11,11 @@ import androidx.wear.compose.material.Text
 import com.google.android.horologist.annotations.ExperimentalHorologistApi
 import com.google.android.horologist.compose.layout.ScalingLazyColumn
 import com.google.android.horologist.compose.layout.ScalingLazyColumnState
-import dev.johnoreilly.starwars.fragment.PersonFragment
+import dev.johnoreilly.starwars.shared.Person
 
 @Composable
 fun PeopleList(
-    people: List<PersonFragment>,
+    people: List<Person>,
     columnState: ScalingLazyColumnState,
 ) {
     ScalingLazyColumn(
@@ -28,11 +28,11 @@ fun PeopleList(
 }
 
 @Composable
-fun PersonView(person: PersonFragment) {
+fun PersonView(person: Person) {
     Card(modifier = Modifier.fillMaxWidth(), onClick = { }) {
         Text(person.name, style = MaterialTheme.typography.title3)
         Text(
-            person.homeworld?.name ?: "",
+            person.homeworld ?: "",
             style = MaterialTheme.typography.body1
         )
     }

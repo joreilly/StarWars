@@ -1,6 +1,5 @@
 [versions]
 kotlin = "2.4.20"
-ksp = "2.3.12"
 kotlinx-coroutines = "1.11.0"
 
 androidGradlePlugin = "9.1.1"
@@ -8,7 +7,6 @@ koin = "4.2.2"
 koinComposeMultiplatform = "4.2.2"
 apollo = "5.2.0"
 apolloMockServer = "0.3.1"
-kmpNativeCoroutines = "1.0.6"
 
 androidxActivity = "1.13.0"
 androidxComposeBom = "2026.06.01"
@@ -72,10 +70,8 @@ junit = { module = "junit:junit", version.ref = "junit" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-kotlin-multiplatform-library = { id ="com.android.kotlin.multiplatform.library", version.ref ="androidGradlePlugin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 apollo = { id = "com.apollographql.apollo", version.ref = "apollo" }
-kmpNativeCoroutines = { id = "com.rickclephas.kmp.nativecoroutines", version.ref = "kmpNativeCoroutines" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm" }

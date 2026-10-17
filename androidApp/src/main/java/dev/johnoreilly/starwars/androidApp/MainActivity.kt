@@ -43,8 +43,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import dev.johnoreilly.starwars.androidApp.theme.StarWarsTheme
-import dev.johnoreilly.starwars.fragment.FilmFragment
-import dev.johnoreilly.starwars.fragment.PersonFragment
+import dev.johnoreilly.starwars.shared.Film
+import dev.johnoreilly.starwars.shared.Person
 import dev.johnoreilly.starwars.shared.StarWarsRepository
 
 
@@ -142,7 +142,7 @@ private fun StarWarsBottomNavigation(navController: NavHostController) {
 const val PersonListTag = "PersonList"
 
 @Composable
-fun PeopleList(people: List<PersonFragment>) {
+fun PeopleList(people: List<Person>) {
     LazyColumn(modifier = Modifier.fillMaxSize().testTag(PersonListTag)) {
         items(people) { person ->
             PersonView(person)
@@ -151,7 +151,7 @@ fun PeopleList(people: List<PersonFragment>) {
 }
 
 @Composable
-fun PersonView(person: PersonFragment) {
+fun PersonView(person: Person) {
     Row(modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)) {
         Card(
             modifier = Modifier
@@ -168,7 +168,7 @@ fun PersonView(person: PersonFragment) {
                 },
                 supportingContent = {
                     Text(
-                        person.homeworld?.name ?: "",
+                        person.homeworld ?: "",
                         style = MaterialTheme.typography.titleMedium,
                         color = Color.DarkGray
                     )
@@ -182,7 +182,7 @@ fun PersonView(person: PersonFragment) {
 const val FilmListTag = "FilmList"
 
 @Composable
-fun FilmList(filmList: List<FilmFragment>) {
+fun FilmList(filmList: List<Film>) {
     LazyColumn(modifier = Modifier.fillMaxSize().testTag(FilmListTag)) {
         items(items = filmList, itemContent = { film ->
             FilmView(film)
@@ -192,7 +192,7 @@ fun FilmList(filmList: List<FilmFragment>) {
 
 
 @Composable
-fun FilmView(film: FilmFragment) {
+fun FilmView(film: Film) {
     Row(modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)) {
         Card(
             modifier = Modifier
