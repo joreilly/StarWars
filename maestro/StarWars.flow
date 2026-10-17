@@ -1,4 +1,5 @@
-appId: orgIdentifier.iosApp
+# Shared by the Android and iOS apps: CI passes APP_ID with -e
+appId: ${APP_ID}
 ---
 - launchApp:
     clearState: true
@@ -9,7 +10,17 @@ appId: orgIdentifier.iosApp
     visible: "Luke Skywalker"
     timeout: 30000
 
-- tapOn: "Films"
+# The films tab is labelled differently on each platform
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - tapOn: "Film List"
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn: "Films"
 - extendedWaitUntil:
     visible: "A New Hope"
     timeout: 30000
