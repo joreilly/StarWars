@@ -1,0 +1,17 @@
+appId: orgIdentifier.iosApp
+---
+- launchApp:
+    clearState: true
+
+# People and films come from the live GraphQL API, so allow for a slow network
+- assertVisible: "Star Wars"
+- extendedWaitUntil:
+    visible: "Luke Skywalker"
+    timeout: 30000
+
+- tapOn: "Films"
+- extendedWaitUntil:
+    visible: "A New Hope"
+    timeout: 30000
+
+- takeScreenshot: StarWars
