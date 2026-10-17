@@ -57,7 +57,8 @@ jobs:
       - name: Build iOS app
         run: xcodebuild -project iosApp/iosApp.xcodeproj -scheme iosApp -configuration Debug -destination 'generic/platform=iOS Simulator' ARCHS=arm64 -derivedDataPath build/dd CODE_SIGNING_ALLOWED=NO build
 
-      # Launch the app and load people and films, so runtime crashes in the Swift export bridge fail CI
+      # Launch the app on a simulator and run the Maestro flow shared with the Android app, so
+      # runtime crashes in the Swift export bridge fail CI
       - name: Install Maestro
         run: |
           curl -fsSL "https://get.maestro.mobile.dev" | bash
@@ -71,23 +72,29 @@ jobs:
           xcrun simctl boot "$UDID"
           xcrun simctl bootstatus "$UDID"
           xcrun simctl install "$UDID" build/dd/Build/Products/Debug-iphonesimulator/iosApp.app
-          maestro --device "$UDID" test --debug-output maestro-debug maestro/StarWars.flow
+          maestro --device "$UDID" test --debug-output maestro-debug -e APP_ID=orgIdentifier.iosApp maestro/StarWars.flow
 
       - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: screenshot
+          name: maestro-screenshot-ios
           path: StarWars.png
           if-no-files-found: ignore
 
+      - name: Collect iOS crash reports
+        if: failure()
+        run: |
+          mkdir -p maestro-debug/crash-reports
+          find "$HOME/Library/Logs/DiagnosticReports" -name 'iosApp*' -exec cp {} maestro-debug/crash-reports/ \; || true
+
       # Maestro's logs, screenshots and view hierarchy, plus the app's crash report, to diagnose failures
+      # (Maestro writes under a hidden .maestro directory, hence include-hidden-files)
       - uses: actions/upload-artifact@v7
         if: failure()
         with:
-          name: maestro-debug
-          path: |
-            maestro-debug
-            ~/Library/Logs/DiagnosticReports/iosApp-*.ips
+          name: maestro-debug-ios
+          path: maestro-debug
+          include-hidden-files: true
 
       - name: Save Kotlin/Native (konan) cache
         if: github.ref == 'refs/heads/main' && steps.konan-cache.outputs.cache-hit != 'true'
