@@ -8,8 +8,8 @@ import org.springframework.context.ConfigurableApplicationContext
 class DefaultApplication {
 }
 
-fun runServer(): ConfigurableApplicationContext {
-  return runApplication<DefaultApplication>()
+fun runServer(vararg args: String): ConfigurableApplicationContext {
+  return runApplication<DefaultApplication>(*args)
 }
 
 
