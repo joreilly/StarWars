@@ -6,9 +6,12 @@ plugins {
 
 kotlin {
     @OptIn(org.jetbrains.kotlin.gradle.swiftexport.ExperimentalSwiftExportDsl::class)
-    swiftExport {
-        moduleName = "shared"
-        flattenPackage = "dev.johnoreilly.starwars.shared"
+    export {
+        swift {
+            moduleName = "shared"
+            rootPackage = "dev.johnoreilly.starwars.shared"
+            xcodeIntegration()
+        }
     }
 
     android {
