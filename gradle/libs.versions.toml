@@ -2,7 +2,7 @@
 kotlin = "2.5.0-Beta2"
 kotlinx-coroutines = "1.11.0"
 
-androidGradlePlugin = "9.1.1"
+androidGradlePlugin = "9.5.1"
 koin = "4.2.2"
 koinComposeMultiplatform = "4.2.2"
 apollo = "5.2.0"

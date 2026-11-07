@@ -2,14 +2,14 @@ plugins {
   alias(libs.plugins.kotlinJvm)
   id("org.jetbrains.kotlin.plugin.spring").version("2.4.21")
   id("org.jetbrains.kotlin.plugin.serialization").version("2.4.21")
-  id("org.springframework.boot").version("4.1.1")
+  id("org.springframework.boot").version("4.1.2")
 }
 
 
 dependencies {
   implementation("com.expediagroup:graphql-kotlin-spring-server:11.0.0")
   implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.8.0-0.6.x-compat")
-  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.12.0")
 
   //testImplementation("com.squareup.okhttp3:okhttp:4.11.0")
 }
