@@ -10,7 +10,7 @@ apolloMockServer = "0.3.1"
 
 androidxActivity = "1.13.0"
 androidxComposeBom = "2026.06.01"
-androidx-navigation = "2.9.2"
+androidx-navigation = "2.10.0"
 androidx-lifecycle = "2.11.0"
 horologist = "0.7.15"
 wearCompose = "1.6.2"
