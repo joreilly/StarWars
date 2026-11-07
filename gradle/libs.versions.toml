@@ -24,7 +24,7 @@ androidxTestCore = "1.7.0"
 minSdk = "24"
 minWearSdk = "28"
 targetSdk = "36"
-compileSdk = "36"
+compileSdk = "37"
 
 
 
