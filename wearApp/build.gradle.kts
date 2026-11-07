@@ -21,6 +21,11 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
+    // AGP 9.5's Compose Preview task needs Android resources in the unit-test APK.
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+    }
+
     buildFeatures {
         compose = true
         buildConfig = true
